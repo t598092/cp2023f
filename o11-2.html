@@ -111,7 +111,7 @@
           style="text-align: left"><br><br><br><br><br>
           <section data-auto-animate>
             <pre><code data-trim data-noescape>
-              #include&lt;stdio.h&gt;
+              #include &lt;stdio.h&gt;
                     
               int main(void) {
       
@@ -407,9 +407,21 @@
         data-positiony="0.03" 
         data-scale="1" 
         data-motionno="0"
-        style="text-align: left"><br>
+        style="text-align: left"><br><br>
         首先我們先引入函式庫與寫主要函式<br><br>
-        <img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                #include &lt;stdio.h&gt;
+
+                int main()
+                {
+                    
+
+                    return 0;
+                }
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
         </section>
       </section>
 
@@ -421,11 +433,21 @@
         data-positiony="0.03" 
         data-scale="1" 
         data-motionno="0"
-        style="text-align: left"><br>
+        style="text-align: left"><br><br>
         再來定義變數<br>
         資料型態為int的身高與體重用來存放使用者輸入的數字<br>
         資料型態為float的身高與體重用來存放轉換後的數字，以便BMI的計算<br><br>
-        <img src="img/ch2/o11_2_1.JPG" style="display:block; margin:auto;">
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                int main()
+                {
+                    
+                    int height_cm, weight_pound;
+                    float height_m, weight_kg, BMI;
+                    
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_1.JPG" style="display:block; margin:auto;">-->
         </section>
       </section>
 
@@ -437,12 +459,29 @@
         data-positiony="0.03" 
         data-scale="1" 
         data-motionno="0"
-        style="text-align: left"><br>
+        style="text-align: left"><br><br>
         再來寫使用者輸入身高和體重的部分<br>
         使用while迴圈令使用者可重複輸入身高體重計算BMI，直到輸入-1 結束<br>
         使用printf於螢幕上輸出提示給使用者<br>
         使用scanf於螢幕上顯示輸入框給使用者輸入數字，%d代表輸入框只接受數字的輸入<br><br>
-        <img src="img/ch2/o11_2_2.JPG" style="display:block; margin:auto;">
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                // 可重複輸入身高體重計算BMI，能一再輸入，直到輸入-1 結束
+                while(1)
+                {
+                    // 輸入身高體重
+                    printf("請輸入身高(cm)和體重(pound): ");
+                    scanf("%d", &height_cm);
+                    
+                    if(height_cm == -1)
+                    {
+                        break;
+                    }
+
+                    scanf("%d", &weight_pound);
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_2.JPG" style="display:block; margin:auto;">-->
         </section>
       </section>
 
@@ -454,9 +493,17 @@
         data-positiony="0.03" 
         data-scale="1" 
         data-motionno="0"
-        style="text-align: left"><br>
-        使用(float)將型態強制從int轉換為float，待會才能進行BMI的計算，因為BMI有小數點<br><br>
-        <img src="img/ch2/o11_2_3.JPG" style="display:block; margin:auto;">
+        style="text-align: left"><br><br>
+        使用(float)將型態強制從int轉換為float<br>
+        這樣待會才能進行BMI的計算，因為BMI有小數點<br><br>
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                // 轉換身高體重的單位
+                height_m = (float)height_cm / 100;
+                weight_kg = (float)weight_pound * 0.454;
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_3.JPG" style="display:block; margin:auto;">-->
         </section>
       </section>
 
@@ -468,9 +515,25 @@
         data-positiony="0.03" 
         data-scale="1" 
         data-motionno="0"
-        style="text-align: left"><br>
+        style="text-align: left"><br><br>
         判斷身高體重是否在一定範圍內，以防使用者輸入不符常理的數字<br><br>
-        <img src="img/ch2/o11_2_4.JPG" style="display:block; margin:auto;">
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                // 判斷身高體重是否在範圍內
+                if(height_m <= 0.5 || height_m >= 2.50)
+                {
+                    printf("Input Height Error\n");
+                    continue;
+                }
+                
+                if(weight_kg <= 20 || weight_kg >= 300)
+                {
+                    printf("Input Weight error\n");
+                    continue;
+                }
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_4.JPG" style="display:block; margin:auto;">-->
         </section>
       </section>
 
@@ -482,9 +545,15 @@
         data-positiony="0.03" 
         data-scale="1" 
         data-motionno="0"
-        style="text-align: left"><br>
+        style="text-align: left"><br><br>
         計算BMI<br><br>
-        <img src="img/ch2/o11_2_5.JPG" style="display:block; margin:auto;">
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                // 計算BMI
+                BMI = weight_kg / (height_m * height_m);
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_5.JPG" style="display:block; margin:auto;">-->
         </section>
       </section>
 
@@ -496,11 +565,32 @@
         data-positiony="0.03" 
         data-scale="1" 
         data-motionno="0"
-        style="text-align: left"><br>
+        style="text-align: left"><br><br>
         判斷BMI是否太高或太低，並輸出結果<br>
         使用%.2lf保留輸出的數字到小數點後2位，\n代表換行符號<br>
         結束while迴圈，程式結束<br><br>
-        <img src="img/ch2/o11_2_6.JPG" style="display:block; margin:auto;">
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                       // 判斷BMI是否太高或太低並輸出結果
+                        if(18.5 <= BMI && BMI <= 24.00)
+                        {
+                            printf("%.2lf\n", BMI-0.005);
+                        }
+                        else if( BMI > 24.00)
+                        {
+                            printf("BMI too high\n");
+                        }
+                        else
+                        {
+                            printf("BMI too low\n");
+                        }
+                    }
+                    
+                    return 0;
+                }
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_6.JPG" style="display:block; margin:auto;">-->
         </section>
       </section>  
         
