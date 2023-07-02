@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1900">
+  <title>o21-1</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+  <link rel="stylesheet" href="vendor/reveal/reset.css">
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css"><!--edit-->
+  <!-- Pollyfill script -->
+  <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+  <!-- Live2DCubismCore script -->
+  <script src="./dist/live2dcubismcore.js"></script>
+  <!-- Build script -->
+  <script src="./dist/bundle.js"></script>
+  <style>
+    ul, ol{
+      list-style: none;
+      margin-left: 0;
+    }
+    .reveal {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 26px;
+    }
+    #pageIndex{
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      background: #000;
+      color: #fff;
+      font-size: 20px;
+    }
+    .controls{
+      bottom: 24px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!--
+         data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+         data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+         data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+         data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+         data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+      -->
+      <section>
+        <h3 >單層迴圈圖形列印 (進階題)</h3>
+        <section
+          data-no="6" 
+          data-positionx="0.8" 
+          data-positiony="0.03" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left"><br>
+          將 Code 寫成<span style="color:red;">至少三個 function,每一個 function 至多使用一層迴圈</span>,輸入圖案編號與參數,輸出各種圖形。<br><br>
+          輸入 : 選擇欲輸出的圖形編號(1~3)及參數<br><br>
+          輸出 : 輸出預期的圖形<br><br>
+          <img src="img/ch6/demo.png" style="display:block; margin:auto;">
+        </section>
+      </section>
+
+      <section>
+        <h3>單層迴圈圖形列印 (進階題)</h3>
+        <section 
+          data-no="6"
+          data-positionx="0.8" 
+          data-positiony="0.03" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left">
+          <br>
+          <img src="img/ch6/in_out1.png" style="display:block; margin:auto;">
+        </section>
+      </section>
+
+      <section>
+        <h3>單層迴圈圖形列印 (進階題)</h3>
+        <section 
+          data-no="6"
+          data-positionx="0.8" 
+          data-positiony="0.03" 
+          data-scale="1" 
+          data-motionno="0"
+          style="text-align: left">
+          <br>
+          <img src="img/ch6/in_out2.png" style="display:block; margin:auto;">
+        </section>
+      </section>
+
+      <section>
+          <h3>Tips</h3>
+          <section 
+          data-no="17"
+          data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+              style="text-align: left"><br><br>
+              &emsp;&emsp;<span style="color:red;">！！！至少要使用三個 function,每一個 function 至多使用一層迴圈</span>
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                      #include&lt;stdio.h&gt;
+                      
+                      void function1( int );
+                      void function2( int );
+                      void function3( int );
+                          .
+                          .
+                          .
+                      int main(void) {
+                          
+                          // 輸入圖案編號與參數
+
+                          // 根據圖案編號跳至對應的function
+
+                      }
+                      
+                      // 利用function和迴圈輸出對應的圖形
+                      void function1( int x )
+                      {
+                          
+                      }
+
+                      void function2( int x )
+                      {
+
+                      }
+
+                      void function2( int x )
+                      {
+
+                      }
+                          .
+                          .
+                          .
+                  </code></pre>
+              </section>
+          </section>
+      </section>
+
+      <section>
+          <h3>函式(Functions)</h3>
+          <section 
+          data-no="17"
+          data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+              style="text-align: left"><br><br>
+              &emsp;&emsp;無回傳值函式
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>           
+                      #include &lt;stdio.h&gt;
+
+                      // 宣告函式
+                      void square( int );
+
+                      int main()
+                      {
+                          int length = 5;     
+                          square( length ); // 傳入square函式的參數是5
+                          
+                          return 0;
+                      }
+
+                      // 定義函式
+                      // void 不需要有回傳值
+                      void square( int length)
+                      {
+                          int ans = 0;
+                          ans = length * length;
+                          printf("正方形面積 = %d\n", ans);
+                      }
+                  </code></pre>
+              </section>
+              &emsp;&emsp;以上程式會印出:<br>
+              &emsp;&emsp;正方形面積 = 25<br>
+          </section>
+      </section>
+
+      <section>
+          <h3>函式(Functions)</h3>
+          <section 
+          data-no="17"
+          data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+              style="text-align: left"><br><br>
+              &emsp;&emsp;有回傳值函式
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>           
+                      #include &lt;stdio.h&gt;
+
+                      // 宣告函式
+                      int square( int );
+
+                      int main()
+                      {
+                          int length = 5;    
+                          int ans;
+
+                          ans = square( length ); // 傳入square函式的參數是5
+                          printf("正方形面積 = %d\n", ans);
+
+                          return 0;
+                      }
+
+                      // 定義函式
+                      // 在函式中的參數名稱不一定要和主程式的變數名稱一樣，可以自由改變
+                      int square( int len)
+                      {
+                          int x = 0;
+                          x = len * len; // 將答案存在x中
+                          
+                          return x; //將答案傳回主程式
+                      }
+                  </code></pre>
+              </section>
+              &emsp;&emsp;以上程式一樣會印出:<br>
+              &emsp;&emsp;正方形面積 = 25<br>
+              &emsp;&emsp;但這是從函式square跳回主函式時才會印出從函式square得到的答案<br>
+              &emsp;&emsp;不是在執行函式square時印出答案
+          </section>
+      </section>
+
+
+      
+      <!--
+         data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1, 6-受付, 17-日常, 8-HIYORI)
+         data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+         data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+         data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+         data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+      -->
+
+      <section>
+        <h3 >解答P1</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br><br>
+        &emsp;&emsp;首先我們先引入函式庫與宣告函式
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                  #include &lt;stdio.h&gt;
+
+                  //宣告函式
+
+                  void f_1( int ); //畫第一個圖形的函式，這函式需要輸入一個整數參數
+                  void f_11( int );
+                  void f_12( int, int );
+
+                  void f_2( int ); //畫第二個圖形的函式，這函式需要輸入一個整數參數
+                  void f_21( int, int );
+                  void f_22( int, int );
+                  void f_23( int, int );
+
+                  void f_3( int ); //畫第三個圖形的函式，這函式需要輸入一個整數參數
+                  void f_31( int );
+                  void f_32( int );
+
+              </code></pre> 
+          </section>
+        <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+
+      <section>
+        <h3 >解答P2</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br><br>
+        &emsp;&emsp;再來寫主函式<br>
+        &emsp;&emsp;宣告變數並讓使用者輸入整數與判斷要呼叫哪個函式<br>
+        &emsp;&emsp;需要寫三種函式來印出所需圖形
+          <section data-auto-animate>
+              <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-4|6-9|10-27|"><script type="text/template">
+                  int main() {      
+                      int num, param; //宣告變數
+                      printf("請輸入欲輸出的圖形編號 : "); //印出提醒
+                      scanf("%d",&num); //讓使用者輸入整數並以十進位的方式傳給變數num
+                      
+                      if(num < 1 || num > 3) //當num的數值小於1或大於3時執行此敘述
+                      {
+                          printf("ERROR"); //印出提醒
+                      }
+                      else //當num的數值不小於1且不大於3時執行此敘述
+                      {
+                          printf("請輸入參數 : "); //印出提醒
+                          scanf("%d",&param); //讓使用者輸入整數並以十進位的方式傳給變數param
+                          
+                          if(num == 1) //當num的數值等於1時執行此敘述
+                          {
+                              f_1( param ); //呼叫函式f_1
+                          } 
+                          else if(num == 2) //當num的數值等於2時執行此敘述
+                          {
+                              f_2( param ); //呼叫函式f_2
+                          } 
+                          else if(num == 3) //當num的數值等於3時執行此敘述
+                          {
+                              f_3( param ); //呼叫函式f_3
+                          }
+                      }
+                      return 0;
+                  }
+              </script></code></pre> 
+          </section> 
+        <!--<img src="img/ch2/o11_2_1.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+
+      <section>
+        <h3 >解答P3</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br><br>
+        &emsp;&emsp;開始使用函式f_1印出第一個圖形<br>
+        &emsp;&emsp;函式預設獲取一整數值，這裡得到剛才傳來的使用者輸入的param值<br>
+        &emsp;&emsp;函式裡面使用迴圈，判斷i跟x的關係來決定進一步呼叫哪個函式<br>
+        &emsp;&emsp;設定每次執行函式都只印出一行圖形
+          <section data-auto-animate>
+              <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-4|5-22|5-8,19-22|9-14,19-22|15-18,19-22|"><script type="text/template">
+                  void f_1( int x ) //預設獲取一整數值，這裡獲取param的值
+                  {
+                      for(int i = 1; i <= x * 2 - 1; i++) //宣告i初始值為1，設定迴圈條件當i小於x乘2減1時繼續執行迴圈，並且每執行完一次i的數值加1
+                      {
+                          if( i < x )
+                          {
+                              f_11( i ); //呼叫函式f_11
+                          }
+                          else if( i == x )
+                          {
+                              f_11( i ); //呼叫函式f_11
+                              printf("\n");
+                              f_12( i, x ); //呼叫函式f_12
+                          }
+                          else
+                          {
+                              f_12( i, x ); //呼叫函式f_12
+                          }
+                          if(i != (x * 2 - 1)) //當i的數值不等於x乘2減1執行此敘述
+                          {
+                              printf("\n");
+                          }
+                      }
+                  }
+              </script></code></pre>
+          </section>
+        <!--<img src="img/ch2/o11_2_2.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+
+      <section>
+        <h3 >解答P4</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br><br>
+        &emsp;&emsp;使用函式f_11印出前半部圖形<br>
+        &emsp;&emsp;使用函式f_11和f_12印出中間部分圖形<br>
+        &emsp;&emsp;使用函式f_12印出後半部圖形
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                void f_11( int i) //預設獲取一整數值i，這裡獲取f_1敘述內傳來的值
+                {
+                    for(int j = 1; j <= i; j++)
+                        printf("%d",j); //印出當前j的值，%d表示讓j的值以十進位方式顯示
+                }
+
+                void f_12( int i, int x)  //預設獲取一整數值i跟一整數值x，這裡獲取f_1敘述內傳來的值
+                {
+                    for(int j = x * 2 - i; j >= 1; j--) 
+                        printf("%d",j); //印出當前j的值，%d表示讓j的值以十進位方式顯示
+                }
+              </code></pre>
+          </section>
+        <img src="img/ch6/in_out1.png" style="display:block; float:left;" width="40%">
+        <!--<img src="img/ch2/o11_2_3.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+
+      <section>
+        <h3 >解答P5</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br><br>
+        &emsp;&emsp;開始使用函式f_2印出第二個圖形<br>
+        &emsp;&emsp;函式預設獲取一整數值，這裡得到剛才傳來的使用者輸入的param值<br>
+        &emsp;&emsp;函式裡面使用迴圈，第一個迴圈印出前半部圖形，第二個迴圈印出後半部圖形<br>
+        &emsp;&emsp;設定每次執行函式都只印出一行圖形
+          <section data-auto-animate>
+              <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|3-9|11-18|"><script type="text/template">
+                  void f_2( int x ) //預設獲取一整數值x，這裡獲取param的值
+                  {
+                      for(int i = 1; i <= x - 1; i++) //宣告i初始值為1，設定迴圈條件當j小於等於x時繼續執行迴圈，並且每執行完一次敘述i的數值加1
+                      {
+                          f_21( x, i); //呼叫函式f_21
+                          f_22( x, i); //呼叫函式f_22
+
+                          printf("\n");
+                      }
+
+                      for(int i = x-1; i >=1; i--) //宣告i初始值為x減1，設定迴圈條件當i大於等於1時繼續執行迴圈，並且每執行完一次敘述i的數值減1
+                      {
+                          f_23( x, i); //呼叫函式f_23
+                          f_22( x, i); //呼叫函式f_22
+
+                          if(i != 1) //當i的數值不等於1時執行此敘述
+                              printf("\n");
+                      }
+                  }
+              </script></code></pre>
+          </section>
+        <!--<img src="img/ch2/o11_2_2.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+
+      <section>
+        <h3 >解答P6</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left">
+        <img src="img/ch6/in_out22.png" style="display:block; float:right;" width="23%"><br><br><br>
+        &emsp;&emsp;使用函式f_21和f_22印出上半部圖形<br>
+        &emsp;&emsp;使用函式f_23和f_22印出下半部圖形
+          <section data-auto-animate>
+              <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-21|12-32|"><script type="text/template">
+                  void f_21( int x, int i) //預設獲取一整數值x跟一整數值i，這裡獲取f_2敘述內傳來的值
+                  {
+                      for(int j = x-1; j >= 1; j--)
+                      {
+                          if( i < j )
+                              printf("_");
+                          else
+                              printf("%d",j); //印出當前j的值，%d表示讓j的值以十進位方式顯示
+                      }
+                  }
+
+                  void f_22( int x, int i) //預設獲取一整數值x跟一整數值i，這裡獲取f_2敘述內傳來的值
+                  {
+                      for(int j = 2; j <= x-1; j++)
+                      {
+                          if( i >= j )
+                              printf("%d",j); //印出當前j的值，%d表示讓j的值以十進位方式顯示
+                          else 
+                              printf("_");
+                      }
+                  }
+
+                  void f_23( int x, int i) //預設獲取一整數值x跟一整數值i，這裡獲取f_2敘述內傳來的值
+                  {
+                      for(int j = x-1; j >= 1; j--)
+                      {
+                          if( i >= j)
+                              printf("%d",j); //印出當前j的值，%d表示讓j的值以十進位方式顯示
+                          else
+                              printf("_");
+                      }
+                  }
+              </script></code></pre>
+          </section>
+        <!--<img src="img/ch2/o11_2_3.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+
+      <section>
+        <h3 >解答P7</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br><br>
+        &emsp;&emsp;開始使用函式f_3印出第一個圖形<br>
+        &emsp;&emsp;函式預設獲取一整數值，這裡得到剛才傳來的使用者輸入的param值<br>
+        &emsp;&emsp;函式裡面使用迴圈印出圖形<br>
+        &emsp;&emsp;設定每次執行函式都只印出一行圖形
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                  void f_3( int x ) //預設獲取一整數值x，這裡獲取param
+                  {
+                      for(int i = 1; i <= x; i++) //宣告i初始值為1，設定迴圈條件當i小於等於x時繼續執行迴圈，並且每執行完一次敘述i的數值加1
+                      {
+                          f_31( i ); //呼叫函式f_31
+                          f_32( i ); //呼叫函式f_32
+                          
+                          if(i != x) //當i的數值不等於x時執行此敘述
+                              printf("\n"); //印出換行
+                      }
+                  }
+              </code></pre>
+          </section>
+        <!--<img src="img/ch2/o11_2_2.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+
+      <section>
+        <h3 >解答P8</h3>
+        <section
+        data-no="8"
+        data-positionx="0.8" 
+        data-positiony="0.03" 
+        data-scale="1" 
+        data-motionno="0"
+        style="text-align: left"><br><br>
+        &emsp;&emsp;使用函式f_31印出左半部圖形<br>
+        &emsp;&emsp;使用函式f_32印出右半部圖形<br>
+        &emsp;&emsp;程式結束
+          <section data-auto-animate>
+              <pre><code data-trim data-noescape>
+                  void f_31( int i ) //預設獲取一整數值i，這裡獲取f_3敘述內傳來的值
+                  {
+                      for(int j = 1; j <= i ; j++)
+                          printf("%d",j); //印出當前j的值，%d表示讓j的值以十進位方式顯示
+                  }
+
+                  void f_32( int i ) //預設獲取一整數值i，這裡獲取f_3敘述內傳來的值
+                  {
+                      for(int j = i-1; j >= 1 ; j--)
+                          printf("%d",j); //印出當前j的值，%d表示讓j的值以十進位方式顯示
+                  }
+              </code></pre>
+          </section>
+        <img src="img/ch6/in_out33.png" style="display:block; float:left;" width="40%">
+        <!--<img src="img/ch2/o11_2_3.JPG" style="display:block; margin:auto;">-->
+        </section>
+      </section>
+    
+    </div>
+  </div>
+  <div id="pageIndex"></div>
+  <!-- reveal.js-->
+  <script src="vendor/reveal/reveal.js"></script>
+  <!--plugin-->
+  <script src="vendor/reveal/plugin/math/math.js"></script>
+  <script src="vendor/reveal/plugin/search/search.js"></script>
+  <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+  <script src="vendor/reveal/plugin/notes/notes.js"></script>
+  <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+  <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+  <script src="main-ppt.js"></script>
+</body>
+
+</html>
