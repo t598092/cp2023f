@@ -109,11 +109,11 @@
 
                             int main(void) {
 
-                                char number[16];            // 待轉換數字的進制
+                                char number[16];            // 待轉換數字
                                 char converted_number[30];  // 存十進制整數除指定的轉換進制的餘數
                                 int before_radix;           // 待轉換數字的進制
                                 int after_radix;            // 指定的轉換進制
-                                unsigned long num = 0;      // 轉換後的十進制整數
+                                unsigned long long num = 0;      // 轉換後的十進制整數
                                 bool error = false;
                                 char table[17] = "0123456789ABCDEF";
 
@@ -401,7 +401,7 @@
                             int before_radix;           // 待轉換數字的進制
                             int after_radix;            // 指定的轉換進制
                             int count = 0;
-                            unsigned long num = 0;      // 轉換後的十進制整數
+                            unsigned long long num = 0;      // 轉換後的十進制整數
                             bool error = false;
                             char table[17] = "0123456789ABCDEF";
                       </code></pre> 
