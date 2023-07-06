@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>o12-6</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+            <section>
+                <h3>撲克牌遊戲(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    A, B, C, D 四人玩牌,輸入 N 玩 N 輪,輸出每一輪獲勝的人,規則如下:<br><br>
+                    1.四種花色黑桃、紅心、方塊、梅花,定義 S, H, D, C。<br><br>
+                    2. 牌面符號 A, 2, ..,, J, Q, K,點數 2~10 為 2~10, A 為 14,J為 11, Q 為 12,K 為 13,<br>
+                    &emsp;共有 52 張牌。<br><br>
+                    3. 花色大小:黑桃>紅心>方塊>梅花。<br><br>
+                    4. 輸入編碼規則為牌面符號+花色,例如 10S 表黑桃 10、7D表方塊 7,QC 表梅花 Q。<br><br>
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌遊戲(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    &emsp;0. 散牌 : 單一張牌,沒有任何花色牌型。<br><br>
+                    &emsp;1. 一對 : 兩張數字一樣為 Pair。<br><br>
+                    &emsp;2. 兩對 : 2 組 Pair 的牌為 Two pair。<br><br>
+                    &emsp;3. 三條 : 三張一樣數字的為 Three of a Kind。<br><br>
+                    &emsp;4. 順子 : 數字連續的 5 張牌為 Straight,包括[2, 3, 4, 5, 6],..,[11, 12, 13, 14, 2],<br>
+                    &emsp;&emsp;&emsp;&emsp; [12, 13 ,14, 2, 3], [13 ,14, 2, 3, 4], [14, 2,3, 4, 5]。<br><br>
+                    &emsp;5. 同花 : 五張同一花色的牌為 Flush。<br><br>
+                    &emsp;6. 葫蘆 : Three of a Kind 加一個 Pair 為 Full House。<br><br>
+                    &emsp;7. 四條 : 四張一樣數字為 Four of a Kind。<br><br>
+                    &emsp;8. 同花順 : 5 張數字連續且花色一樣為 Straight Flush。<br><br>
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌遊戲(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    輸入說明:<br><br>
+                    &emsp;1. 正整數 N,代表進行 N 輪遊戲<br>
+                    &emsp;2. 輸入順序為 A、B、C、D 玩家各 5 張牌(空格分隔),<br>
+                    &emsp;&emsp;每張牌以牌面符號+花色表示,例如 10S 是黑桃 10、7D 是方塊7,QC 是梅花 Q。<br>
+                    <br><br>
+                    輸出說明 :<br><br>
+                    &emsp;1.依序輸出每一輪的贏家<br>
+                    &emsp;2.若此輪有任何牌面符號錯誤或花色錯誤,輸出"Error input",並結束這輪牌局。<br>
+                    &emsp;3. 若此輪有重複發牌,輸出"Duplicate deal",並結束這輪牌局。<br>
+                    &emsp;4. 數字連續定義為:K(13) 和 A(14) 有相連,A(14) 和 2 有相連,依此類推。<br>
+
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌遊戲(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch10/10_5_demo.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>
+                        #include&lt;stdio.h&gt;
+                        #include&lt;stdbool.h&gt;
+
+                        int card_type(int arr[]); // 找出該組牌的最大牌型
+
+                        int main()
+                        {
+                            char Face[] = {'2','3','4','5','6','7','8','9',' ','J','Q','K','A'}; // 把10略過可以讓陣列保持一維，另外作判斷看數字是否為10
+                            char Suit[] = {'C','D','H','S'};
+                            char win_player;
+                            char set[20][5]; // 以字串方式儲存牌組
+                            int round;
+                            int set_int[20] = {0}; // 把牌組存成整數
+                            int set_int_4[4][5]; // 第一組牌, 第二組牌, 第三組牌, 第四組牌
+                            int copy_set[5] = {0};
+                            bool is_Error;
+                            bool is_Duplicate;
+                            bool is_Suit;
+                            bool is_Face;
+
+                            // 輸入回合數
+
+                            // 輸入四組牌
+
+                            // 把牌組轉換成對應數字 Face * 10 + Suit，要注意數字10 
+
+                            // 用泡泡排序法把四個牌組由小到大排序
+
+                            // 把set_int_4丟到card_type，取得各自的最大牌型編號
+
+                            // 比較哪個牌型較大，輸出最大牌型編號
+                            
+                            return 0;
+                        }
+
+                        int card_type(int arr[])
+                        {
+                            
+                        }
+                    </code></pre>
+                </section>
+            </section>
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
