@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>o11-5</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section
+                data-no="6"
+                data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    Suit: Spade (S), Heart (H), Diamond (D), Club (C). S > H > D > C.<br><br>
+
+                    Face: A, 2, ..., J, Q, K. The point of 2~10 is 2~10,<br>
+                    &emsp;&emsp;&ensp;A is 14, and J is 11, Q is 12, K is 13.<br><br>
+
+                    Type 編號:<br>
+                    &emsp;1. 散牌 : 單一張牌。<br>
+                    &emsp;2. 一對 : 兩張數字一樣為 Pair。<br>
+                    &emsp;3. 兩對 : 2 組 Pair 的牌為 Two pair。<br>
+                    &emsp;4. 三條 : 三張一樣數字的為 Three of a Kind。<br>
+                    &emsp;5. 順子 : 數字連續的 5 張牌為 Straight,包括[2, 3, 4, 5, 6],..,<br>
+                    &emsp;&emsp;[11, 12, 13, 14, 2], [12, 13 ,14, 2, 3], [13 ,14, 2, 3, 4], [14,2, 3, 4, 5]。<br>
+                    &emsp;6. 同花 : 五張同一花色的牌為 Flush。<br>
+                    &emsp;7. 葫蘆 : Three of a Kind 加一個 Pair 為 Full House。<br>
+                    &emsp;8. 四條 : 四張一樣數字為 Four of a Kind。<br>
+                    &emsp;9. 同花順 : 數字連續的 5 張且花色一樣為 Straight Flush。<br>
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section 
+                data-no="6"
+                data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    輸入說明:<br>
+                    &emsp;輸入兩組牌,判斷哪組牌型編號較大,輸出編號。<br>
+                    &emsp;1.每一列輸入一組牌 5 張撲克 encode,空格分開。<br>
+                    &emsp;&emsp;(encode : Face+Suit. 10S is Spade 10, 7D is diamond 7, QC is club Q.)<br>
+                    &emsp;2. 檢查任一組是否輸入錯誤,若錯誤,output "Error input"。<br>
+                    &emsp;3. 檢查所有牌是否有重複,若重複,output "Duplicate deal" 。<br>
+                    &emsp;4. "Error input"和"Duplicate deal"同時發生則輸出"Error input"<br><br>
+
+                    輸出說明 :<br>
+                    &emsp;1. 根據輸入,輸出相對應的牌型,1~9 整數,代表牌型編號; 以「最大牌型輸出」。<br>
+                    &emsp;2. 數字連續定義為:K(13) 和 A(14) 有相連,A(14) 和 2 有相連,依此類推。<br>
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section
+
+                data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch8/in_out5.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>撲克牌梭哈(進階題1)</h3>
+                <section
+                data-no="6"
+                data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1. 散牌&emsp;&emsp;&emsp;6. 同花<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2. 一對&emsp;&emsp;&emsp;7. 葫蘆<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;3. 兩對&emsp;&emsp;&emsp;8. 四條<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;4. 三條&emsp;&emsp;&emsp;9. 同花順<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;5. 順子<br><br><br>
+                    <img src="img/ch8/demo5.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section
+                data-no="17"
+                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>
+                        #include&lt;stdio.h&gt;
+                        #include&lt;stdbool.h&gt;
+
+                        int card_type(int arr[]); // 找出該組牌的最大牌型
+
+                        int main()
+                        {
+                            char Face[] = {'2','3','4','5','6','7','8','9',' ','J','Q','K','A'}; // 把10略過可以讓陣列保持一維，另外作判斷看數字是否為10
+                            char Suit[] = {'C','D','H','S'};
+                            char set[10][5]; // 以字串方式儲存牌組
+                            int  set_int[10] = {0}; // 把牌組存成整數
+                            int  set_1_int[5], set_2_int[5]; // 第一組牌, 第二組牌
+
+                            // 輸入兩組牌
+
+                            // 把牌組轉換成對應數字 Face * 10 + Suit，要注意數字10 
+
+                            // 把set_int分成兩個字串set_1_int、set_2_int 
+
+                            // 把set_1_int、set_2_int由小到大排序
+
+                            // 把set_1_int、set_2_int丟到card_type，取得各自的最大牌型編號
+
+                            // 比較哪個牌型較大，輸出最大牌型編號
+                            
+                            return 0;
+                        }
+
+                        int card_type(int arr[])
+                        {
+                            int set[5]; // 儲存傳入的陣列
+                            bool is_type[10] = {false}; // 牌組是否形成牌型
+                            int same_num[4] = {0}; // 從index後面算有幾張是相同的數字
+
+                            is_type[1] = true; // 無牌型為散牌
+                            
+                            // 判斷是否為 順子(5)
+
+                            // 判斷是否為 同花(6)
+
+                            // 判斷是否為 同花順(9) = 同花(6) + 順子(5), 若是直接回傳 9
+
+                            // 計算牌組中有多少張數字一樣的牌,
+                            for(int i = 0; i &lt; 4; i++)
+                            {
+                                for(int j = i + 1; j &lt;= 4; j++)
+                                {
+                                    if(set[i] / 10 == set[j] / 10)
+                                    {
+                                        same_num[i]++;
+                                    }
+                                }
+                                i += same_num[i];
+                            }
+
+                            // 根據same_num可以判斷是否為四條(8)、三條(4)、兩對(3)、一對(2), 若是四條直接回傳 8
+
+                            // 判斷是否為 葫蘆(7) = 三條(4) + 一對(2), , 若是直接回傳 7
+
+                            // 若是牌型 7、8、9 前面已return，且要輸出最大牌型，所以從牌型6開始由大到小檢查是否符合
+                        }
+                    </code></pre>
+                </section>
+
+                <section
+                data-no="17"
+                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    Face * 10 + Suit<br><br>
+                    例 :<br>
+                    QH &ensp;KD &ensp;AC &ensp;2D &ensp;3S<br>
+                    122 &ensp;131 &ensp;140 &ensp;21 &ensp;33 &ensp;排序後&ensp;->&ensp; 21 &ensp;33 &ensp;122 &ensp;131 &ensp;140<br><br>
+                    [11, 12, 13, 14, &ensp;2]&ensp;->&ensp;20, 110, 120, 130, 140&ensp;(110 - 20 = 90)<br><br>
+                    [12, 13, 14, &ensp;2, &ensp;3]&ensp;->&ensp;20, &ensp;30, 120, 130, 140&ensp;(120 - 30 = 90)<br><br>
+                    [13, 14, &ensp;2, &ensp;3, &ensp;4]&ensp;->&ensp;20, &ensp;30, &ensp;40, 130, 140&ensp;(130 - 40 = 90)<br><br>
+                    [14, &ensp;2, &ensp;3, &ensp;4,  &ensp;5]&ensp;->&ensp;20, &ensp;30, &ensp;40, &ensp;50, 140&ensp;(140 - 50 = 90)<br><br>
+                    可用這點來判斷牌組是否為順子。
+                </section>
+    
+                <section 
+                data-no="17"
+                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    &emsp;Face * 10 + Suit<br><br>
+                    &emsp;例 :<br>
+                    &emsp;9D 8C 8S 8H 9S<br>
+                    &emsp;91 80 83 82 93 排序後 -> 80 82 83 91 93<br><br>
+                        <pre><code data-trim data-noescape>           
+                        for(int i = 0; i &lt; 4; i++)
+                        {
+                            for(int j = i + 1; j &lt;= 4; j++)
+                            {
+                                if(set[i] / 10 == set[j] / 10)
+                                {
+                                    same_num[i]++; // 跳過相同數字的牌
+                                }
+                            }
+                            i += same_num[i];
+                        }
+                        </code></pre>
+                    <br>
+                    &emsp;same_num[] = {2,0,0,1},<br>
+                    &emsp;2 表示排序後index = 0 的後面有兩張牌與它數字相同，<br>
+                    &emsp;且same_num[]中有兩個非0數字，就代表有兩對。
+                </section>
+            </section>
+                
+            <section>
+                <h3>陣列</h3>
+                <section 
+                data-no="17"
+                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    &emsp;&emsp;陣列是一種資料結構，由一連串的記憶體空間組合而成，<br>
+                    &emsp;&emsp;用來儲存相同資料型態的變數。<br>
+                    &emsp;&emsp;陣列的索引值從0開始。<br>
+                    &emsp;&emsp;請參考以下的說明圖示。<br><br>
+                    <img src="img/ch4/array.png" style="display:block; margin:auto;"><br>
+                </section>
+            </section>
+
+            <section>
+                <h3>氣泡排序法</h3>
+                <section
+                data-no="17"
+                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    &emsp;&emsp;&emsp;&emsp;氣泡排序法(Bubble Sort)又稱交換排序法<br>
+                    &emsp;&emsp;&emsp;&emsp;原理是從第一筆資料開始，逐一比較相鄰兩筆資料<br>
+                    &emsp;&emsp;&emsp;&emsp;如果兩筆大小順序有誤則做交換，反之則不動<br>
+                    &emsp;&emsp;&emsp;&emsp;接著再進行下一筆資料比較<br>
+                    &emsp;&emsp;&emsp;&emsp;所有資料比較完1回合後，可以確保最後一筆資料是正確的位置<br><br>
+                <img src="img/ch8/bubble.jpg" style="display:block; margin: auto;" width="70%">
+                </section>
+            </section>
+          <!--
+             data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1, 6-受付, 17-日常, 8-HIYORI)
+             data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+             data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+             data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+             data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+          -->
+
+          <section>
+            <h3 >解答P1</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;首先我們先引入函式庫與宣告函式
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    #include&lt;stdio.h&gt;
+                    #include&lt;stdbool.h&gt;
+
+                    int card_type(int arr[]); // 找出該組牌的最大牌型
+
+                    int main()
+                    {
+                        char Face[] = {'2','3','4','5','6','7','8','9',' ','J','Q','K','A'}; // 把10略過可以讓陣列保持一維，另外作判斷看數字是否為10
+                        char Suit[] = {'C','D','H','S'};
+                        char set[10][5]; // 以字串方式儲存牌組
+                        int  set_int[10] = {0}; // 把牌組存成整數
+                        int  set_1_int[5], set_2_int[5]; // 第一組牌, 第二組牌
+                        bool is_Duplicate = false;
+                        int type1 = 0, type2 = 0; // 兩組牌的牌型編號
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P2</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;讓使用者輸入兩組牌
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 讓使用者輸入兩組牌，將第一組牌分別存進 set[0], ... ,set[4]，將第二組牌分別存進 set[5], ... ,set[9]
+                    scanf("%s %s %s %s %s",set[0],set[1],set[2],set[3],set[4]);
+                    scanf("%s %s %s %s %s",set[5],set[6],set[7],set[8],set[9]);
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section><br><br><br><br>
+            <img src="img/ch8/array2.jpg" style="display:block; margin: auto;" width="75%">
+          </section>
+
+          <section>
+            <h3 >解答P3</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;讓使用者輸入兩組牌
+              <section data-auto-animate>
+                  <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-3|4-31|4-20|21-31|33-47|"><script type="text/template">      
+                    // 把牌組轉換成對應數字 Face * 10 + Suit 
+                    for(int i = 0; i < 10; i++) //每次迴圈分別計算每張牌的對應數字
+                    {
+                        for(int j = 0; j < 13; j++ )
+                        {
+                            if(set[i][0] == Face[j]) //判斷牌面點數是否是 2, 3, ..., 9 或 J, Q, K, A
+                            {
+                                for(int k = 0; k < 4;k++) //判斷花色( C, D, H, S )
+                                {
+                                    if(set[i][1] == Suit[k]) //判斷陣列第二個字元是否等於當前花色
+                                    {
+                                        set_int[i] = (j + 2) * 10 + k ; //將牌面轉換為整數，最小值為 20 (對應牌面: 2C)
+                                    }
+                                }
+                                if(set[i][2] != '\0')
+                                {
+                                    printf("Error input");
+                                    return 0;
+                                }
+                            }
+                            else if(set[i][0] == '1' && set[i][1] == '0') //判斷牌面點數是否為10
+                            {
+                                for(int k = 0; k < 4;k++) //判斷花色
+                                {
+                                    if(set[i][2] == Suit[k]) //判斷陣列第二個字元是否等於當前花色
+                                    {
+                                        set_int[i] = 10 * 10 + k ; //將牌面轉換為整數
+                                    }
+                                }
+                            }
+                        }
+
+                        if(set_int[i] == 0) //判斷是否缺少牌面數字轉換
+                        {
+                            printf("Error input");
+                            return 0;
+                        }
+                        else
+                        {
+                            for(int j = 0; j < i; j++) //判斷當前牌面與其他牌面對應數字是否相同，若相同表示有重複發牌
+                            {
+                                if(set_int[i] == set_int[j])
+                                {
+                                    is_Duplicate = true;
+                                }
+                            }
+                        }
+
+                    }
+                  </script></code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P4</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;判斷是否重複發牌
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    if(is_Duplicate == true) //判斷是否重複發牌
+                    {
+                        printf("Duplicate deal");
+                        return 0;
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P5</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;將剛才轉換好的set_int分成兩個字串<br>
+            &emsp;&emsp;set_1_int表示第一組牌<br>
+            &emsp;&emsp;set_2_int表示第二組牌<br>
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 把set_int分成兩個字串set_1_int、set_2_int                    
+                    for(int i = 0; i < 10; i++)
+                    {
+                        if(i < 5) //將前五張牌轉換後的整數存進set_1_int，作為第一組牌
+                        {
+                            set_1_int[i] = set_int[i];
+                        }
+                        else //將後五張牌轉換後的整數set_2_int，作為第二組牌
+                        {
+                            set_2_int[i-5] = set_int[i];
+                        }
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P6</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;用氣泡排序法將兩組牌分別由小到大排序
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 用泡泡排序法把set_1_int、set_2_int由小到大排序
+                    int temp;
+                    for (int i = 0; i < 4; i++)   //循環N-1次
+                    {      
+                        for (int j = 0; j < 4 - i; j++) //每次循環要比較的次數
+                        { 
+                            if (set_1_int[j] > set_1_int[j + 1])       //比大小後交換
+                            {
+                                temp = set_1_int[j];
+                                set_1_int[j] = set_1_int[j + 1];
+                                set_1_int[j + 1] = temp;
+                            }
+                            if (set_2_int[j] > set_2_int[j + 1])       //比大小後交換
+                            {
+                                temp = set_2_int[j];
+                                set_2_int[j] = set_2_int[j + 1];
+                                set_2_int[j + 1] = temp;
+                            }
+                        }
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P7</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;將兩組牌分別傳進card_type，取得各自的最大牌型編號<br>
+            &emsp;&emsp;比較牌型大小，輸出最大牌型編號<br>
+            &emsp;&emsp;主函式結束
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                        // 把set_1_int、set_2_int丟到card_type，取得各自的最大牌型編號
+                        type1 = card_type(set_1_int);
+                        type2 = card_type(set_2_int);
+                        
+                        // 比較哪個牌型較大，輸出最大牌型編號
+                        if(type1 > type2)
+                        {
+                            printf("%d",type1);
+                        }
+                        else
+                        {
+                            printf("%d",type2);
+                        }
+
+                        return 0;
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P8</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;用函式card_type判斷最大牌型<br>
+            &emsp;&emsp;定義int set[5]儲存傳入的陣列<br>
+            &emsp;&emsp;定義bool is_type[10]判斷1~9種牌型是否成立
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    int card_type(int arr[])
+                    {
+                        int set[5]; // 儲存傳入的陣列
+                        bool is_type[10] = {false}; // 牌組是否形成牌型
+                        int same_num[4] = {0}; // 從index後面算有幾張是相同的數字
+                        
+                        is_type[1] = true; // 無牌型為散牌
+                        
+                        for(int i = 0; i < 5; i++)
+                        {
+                            set[i] = arr[i];
+                        }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P9</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;判斷牌型 順子(5) 是否成立<br>
+            &emsp;&emsp;分別判斷是否有一般的順子或有分段的順子<br>
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 判斷是否為 順子(5)
+                    for(int i = 0; i < 4; i++)
+                    {
+                        //分別判斷是否有一般的順子或有分段的順子
+                        if( (set[i] / 10 + 1) != (set[i+1] / 10) && (set[i] / 10 + 9) != (set[i+1] / 10) ) 
+                        {
+                            is_type[5] = false;
+                            break;
+                        }
+                        is_type[5] = true;
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P10</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;判斷牌型 同花(6) 是否成立<br>
+            &emsp;&emsp;判斷前一張牌的花色是否與後一張牌的花色不同<br>
+            &emsp;&emsp;有不同則跳出迴圈，判斷 同花(6) 不成立
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 判斷是否為 同花(6)
+                    for(int i = 0; i < 4; i++)
+                    {           
+                        //取餘得到兩張牌的花色
+                        int r1 = set[i] % 10;
+                        int r2 = set[i+1] % 10;
+                        if( r1 != r2) //判斷前一張牌的花色是否與後一張牌的花色不同
+                        {
+                            is_type[6] = false;
+                            break;
+                        }
+                        is_type[6] = true;
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P11</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;判斷牌型 同花順(9) 是否成立<br>
+            &emsp;&emsp;同花順即為同花兼順子的組合，因此若兩者成立即成立 同花順(9)<br>
+            &emsp;&emsp;同花順(9) 的牌型編號最大，因此可直接優先回傳 9
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 判斷是否為 同花順(9) = 同花(6) + 順子(5)
+                    if(is_type[5] == true && is_type[6] == true)
+                    {
+                        return 9;
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P12</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;判斷牌組中是否有重複點數的牌<br>
+            &emsp;&emsp;將計算完的結果存至陣列 same_num
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 計算牌組中有多少張點數一樣的牌, 例如: 2D 2H 5C 5H 8D, same_num[] = {1,0,1,0}
+                    for(int i = 0; i < 4; i++) //判斷是否有重複點數 ( 4 + 3 + 2 + 1 ) 次，因為比過的不用重複比
+                    {
+                        for(int j = i + 1; j <= 4; j++)
+                        {
+                            if(set[i] / 10 == set[j] / 10) //判斷目前指定牌的數字是否與後面其他張牌的點數相同
+                            {
+                                same_num[i]++;
+                            }
+                        }
+                        i += same_num[i]; //i = i + same_num[i];
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P13</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;根據陣列 same_num 先判斷牌型 四條(8)、三條(4)、一對(2) 是否成立<br>
+            &emsp;&emsp;若 四條(8) 成立，優先回傳 8
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 根據same_num可以判斷是否為四條(8)、三條(4)、兩對(3)、一對(2)
+                    int pair = 0; // Pair的數量
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if(same_num[i] > 0)
+                        {
+                            pair++;
+                            if(same_num[i] == 3) //與其他 3 張牌重複，確定是四條(8)，回傳牌組編號
+                            {
+                                return 8;
+                            }
+                            else if(same_num[i] == 2) //判斷是否為三條(4)
+                            {
+                                is_type[4] = true;
+                            }
+                            else if(same_num[i] == 1) //判斷是否為一對(2)
+                            {
+                                is_type[2] = true;
+                            }
+                        }
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P14</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;根據pair牌型 兩對(3) 是否成立<br>
+            &emsp;&emsp;再依照前面的牌型成立情況判斷牌型 葫蘆(7) 是否成立<br>
+            &emsp;&emsp;若 葫蘆(7) 成立，優先回傳 7
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                    // 判斷是否為兩對(3)
+                    if(pair == 2)
+                    {
+                        is_type[3] = true;
+                    }
+
+                    // 判斷是否為 葫蘆(7) = 三條(4) + 一對(2)
+                    if(is_type[4] == true && is_type[2] == true)
+                    {
+                        return 7;
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+          <section>
+            <h3 >解答P15</h3>
+            <section
+            data-no="8"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            &emsp;&emsp;最後依照前面的牌型成立情況判斷最大牌型<br>
+            &emsp;&emsp;回傳最大牌型<br>
+            &emsp;&emsp;程式結束
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                        // 若是牌型 7、8、9 前面已return，且要輸出最大牌型，所以從牌型6開始由大到小檢查是否符合
+                        for(int i = 6; i > 0; i--)
+                        {
+                            if(is_type[i] == true)
+                            {
+                                return i;
+                            }
+                        }
+                    }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
+
+
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
