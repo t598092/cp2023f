@@ -112,7 +112,7 @@
             <section>
                 <h3>撲克牌梭哈(進階題1)</h3>
                 <section
-
+                data-no="6"
                 data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
                     <img src="img/ch8/in_out5.png" style="display:block; margin:auto;">
@@ -293,7 +293,15 @@
             data-scale="1" 
             data-motionno="0"
             style="text-align: left"><br><br>
-            &emsp;&emsp;首先我們先引入函式庫與宣告函式
+            &emsp;&emsp;首先我們先引入函式庫與宣告函式和變數<br>
+            &emsp;&emsp;宣告函式 card_type ，用於找出最大牌型<br>
+            &emsp;&emsp;宣告字元陣列 Face[] 和 Suit[] ，用於轉換牌面數字<br>
+            &emsp;&emsp;宣告二維字元陣列 set[10][5] ，用於存放使用者輸入的牌組<br>
+            &emsp;&emsp;宣告整數陣列 set_int[10] ，用於存放轉換後的牌面數字<br>
+            &emsp;&emsp;宣告整數陣列 set_1_int[5] 和 set_2_int[5] ，用於分別存放轉換後的兩組牌<br>
+            &emsp;&emsp;宣告布林值 is_Duplicate ，用於判斷是否重複發牌<br>
+            &emsp;&emsp;宣告整數 type1和type2 ，用於存放兩組牌的牌型編號<br>
+            
               <section data-auto-animate>
                   <pre><code data-trim data-noescape>
                     #include&lt;stdio.h&gt;
