@@ -244,6 +244,56 @@
                 </section>
             </section>
 
+          <section>
+            <h3 >bool型態應用</h3>
+            <section
+            data-no="17"
+            data-positionx="0.8" 
+            data-positiony="0.03" 
+            data-scale="1" 
+            data-motionno="0"
+            style="text-align: left"><br><br>
+            
+              <section data-auto-animate>
+                  <pre><code data-trim data-noescape>
+                        int set[5] = [23, 33, 43, 53, 63]; // 整數陣列，用於儲存 5 張牌轉換後的對應數字
+                        bool is_type[9] = {false}; // 牌組是否形成牌型
+                        
+                        // 判斷是否為 順子(4)
+                        for(int i = 0; i < 4; i++)
+                        {
+                            if(set[i] / 10 + 1 != set[i+1] / 10 && set[i] / 10 + 9 != set[i+1] / 10)
+                            {
+                                is_type[4] = false;
+                                break;
+                            }
+                            is_type[4] = true;
+                        }
+                    
+                        // 判斷是否為 同花(5)
+                        for(int i = 0; i < 4; i++)
+                        {           
+                            int r1 = set[i] % 10;
+                            int r2 = set[i+1] % 10;
+                            if( r1 != r2)
+                            {
+                                is_type[5] = false;
+                                break;
+                            }
+                            is_type[5] = true;
+                        }
+                    
+                        // 判斷是否為 同花順(8) = 同花(5) + 順子(4)
+                        if(is_type[4] == true && is_type[5] == true)
+                        {
+                            is_type[8] = true;
+                        }
+                  </code></pre> 
+              </section>
+            <!--<img src="img/ch2/o11_2_0.JPG" style="display:block; margin:auto;">-->
+            </section>
+          </section>
+
                         
           <!--
              data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1, 6-受付, 17-日常, 8-HIYORI)
