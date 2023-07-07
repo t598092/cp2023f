@@ -323,7 +323,7 @@
               <section data-auto-animate>
                   <pre><code data-trim data-noescape>
                     #include &lt;stdio.h&gt;
-                    #include &lt;stdbool.h>&gt;
+                    #include &lt;stdbool.h&gt;
 
                     int card_type(int arr[]); // 找出該組牌的最大牌型
 
@@ -633,10 +633,13 @@
             &emsp;&emsp;主函式結束
               <section data-auto-animate>
                   <pre><code data-trim data-noescape>
-                        win_player = 'A' + max_player;
-                        printf("%c\n",win_player);
-
-                        round--;
+                            win_player = 'A' + max_player;
+                            printf("%c\n",win_player);
+    
+                            round--;
+                        } //while迴圈
+                      
+                      return 0;
                     }
                   </code></pre> 
               </section>
