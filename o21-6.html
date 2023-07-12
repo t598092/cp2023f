@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>o21-6</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    A, B 兩人用二顆骰子計點比賽，<span style="color:red;">一開始都是點數 1 朝上，點數 4 朝玩家，點數 2 朝右</span>(骰子展開如下圖所示)。接下來 M 次修改操作，每次操作包含二個整數 x, y 代表兩個骰子操作。
+                    <span style="color:red;"><br>
+                    x, y 意義為：1 表示向前滾一次。2 表示向右滾一次</span>。操作修改完成，請輸出分數。<br><br>
+                    計分方式：<br>
+                    1. 若二顆點數均相同，計 0 分，例如 6, 6 或 3, 3。<br>
+                    2. 若二顆點數不同，加總二顆點數，例如 1, 2 (1+2=3 分)或 2, 6(2+6=8 分)。<br><br>
+                    <img src="img/ch12/dice.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch12/05_illustrate.png" style="display:block; margin:auto;"><br>
+                    <img src="img/ch12/05_demo1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    &emsp;&emsp;&emsp;&emsp;一開始是點數 1 朝上，點數 4 朝玩家(後)，點數 2 朝右<br>
+                    &emsp;&emsp;&emsp;&emsp;{3, 1, 4, 6, 2, 5} &emsp;// 依序為: {前, 上, 後, 下, 右, 左}<br><br>
+                    <img src="img/ch12/02dice_2.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    &emsp;&emsp;&emsp;&emsp;初始骰子向前滾一次後的六面點數<br>
+                    &emsp;&emsp;&emsp;&emsp;{3, 1, 4, 6, 2, 5} → {1, 4, 6, 3, 2, 5} &emsp;// 依序為: {前, 上, 後, 下, 右, 左}<br><br>
+                    <img src="img/ch12/02dice_3.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>骰子遊戲 (進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    &emsp;&emsp;&emsp;&emsp;初始骰子向右滾一次後的六面點數<br>
+                    &emsp;&emsp;&emsp;&emsp;{3, 1, 4, 6, 2, 5} → {3, 5, 4, 2, 1, 6} &emsp;// 依序為: {前, 上, 後, 下, 右, 左}<br><br>
+                    <img src="img/ch12/02dice_4.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>函式/語法介紹</h3>
+                <section 
+                data-no="17"
+                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    &emsp;&emsp;運算子 - 比較運算子： ==  >  <  <br>
+                    &emsp;&emsp;運算子 - 其他：+  -  %  ++  =  <br>
+                    &emsp;&emsp;資料型態 – char  int <br>
+                    
+                    &emsp;&emsp;陣列 - 一維(arr1[n])  二維(arr2[m][n]) <br>
+                    &emsp;&emsp;迴圈 - for <br>
+                    &emsp;&emsp;條件判斷 - if … else if …else <br>
+                    
+                    &emsp;&emsp;引入&lt;stdio.h&gt;的函式 printf  scanf
+                </section>
+            </section>
+
+            <section>
+                <h3 >傳值與傳址</h3>
+                <section
+                data-no="17" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;傳值：複製一份值傳入函式，不會更動到原本的變數<br>
+                &emsp;&emsp;傳址：複製位址傳入函式，這時函式將可以透過位址更改原本變數<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        #include &lt;stdio.h&gt;
+                        void changenum_arr(int t[]);
+                        void changenum_int(int t);
+
+                        int main(){
+                            int temp_arr[1] = {0};
+                            int temp_int = 0;
+                            
+                            changenum_arr(temp_arr);
+                            changenum_int(temp_int);
+
+                            printf("%d\n", temp_arr[0]);
+                            printf("%d", temp_int);
+                        }
+
+                        void changenum_arr(int t[]){ // 傳陣列傳址，會更動到原本的變數
+                            t[0] = 10;
+                        }
+
+                        void changenum_int(int t){ // 傳變數傳值，不會更動到原本的變數
+                            t = 10;
+                        }
+                      </code></pre> 
+                  </section>
+                <img src="img/ch4/array.png" style="display:block; float:right;" width="35%">
+                  &emsp;&emsp;output: //第一行印出 t[0]，第二行印出 t<br>
+                  &emsp;&emsp;10<br>
+                  &emsp;&emsp;0<br>
+                </section>
+            </section>
+
+
+                
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-7|9-27|29-40|42-54|56-59|"><script type="text/template">          
+                        #include <stdio.h>
+
+                        void modify_dice(int dice_[][6], int modify_[][2], int modify_num); // 操作骰子六面點數
+                        int modify_mode(int modify_[][2], int count, int dice_num);  // 回傳修正方式
+                        void roll_forward_1(int dice_[][6], int dice); // 向前滾一次
+                        void roll_rigth_2(int dice_[][6], int dice); // 向右滾一次
+                        void print_dice(int dice_[][6]); // 輸出骰子六面點數
+
+                        int main()
+                        {
+                            int modify_num_A, modify_num_B; // 骰子修正次數
+                            int modify_A[10][2], modify_B[10][2]; // 骰子操作方式
+                            int dice_A[2][6] = {{3,1,4,6,2,5},{3,1,4,6,2,5}},dice_B[2][6] = {{3,1,4,6,2,5},{3,1,4,6,2,5}};  
+                            // 骰子初始六面點數，依序為: {前, 上, 後, 下, 右, 左}
+                            int points[2] = {0}; // points[0]表示A兩骰子的總和，points[1]表示B兩骰子的總和
+
+                            // 請輸入A的修正次數
+                            // 請輸入A的修正方式
+                            // 執行相應的修正方式
+
+                            // 請輸入B的修正次數
+                            // 請輸入B的修正方式
+                            // 執行相應的修正方式
+
+                            // 輸出骰子六面點數
+                            // 比骰子大小，輸出結果
+                        }
+
+                        void modify_dice(int dice_[][6], int modify_[][2], int modify_num) //操作骰子六面點數
+                        {
+                            int dice_num;  // 0 表示第一顆骰子, 1 表示第二顆骰子
+                            int mode; // 1 表示表示向前滾一次, 2 表示向右滾一次
+
+                            // 修正幾次執行幾次修正
+                        }
+
+                        int modify_mode(int modify_[][2], int count, int dice_num)
+                        {
+                            // 選擇修正方式是向前滾一次還是向右滾一次
+                        }
+
+                        void roll_forward_1(int dice_[][6], int dice)
+                        {
+                            int temp = dice_[dice][0]; // 存放目前在前方的骰子點數
+
+                            // 向前滾一次
+                        }
+
+                        void roll_forward_2(int dice_[][6], int dice)
+                        {
+                            int temp = dice_[dice][1]; // 存放目前在上方的骰子點數
+
+                            // 向右滾一次
+                        }
+
+                        void print_dice(int dice_[][6])
+                        {
+                            // 利用迴圈輸出骰子六面點數
+                        }
+
+                    </script></code></pre>
+                    <img src="img/ch12/dice.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+
+            <section>
+                <h3 >解答P1</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;首先先引入函式庫與宣告函式<br>
+                &emsp;&emsp;宣告 modify_dice 操作當前骰子的六面點數<br>
+                &emsp;&emsp;宣告 modify_mode 回傳當前骰子的操作方式<br>
+                &emsp;&emsp;宣告 roll_forward_1, roll_rigth_2 操作骰子向前滾一次, 向右滾一次<br>
+                &emsp;&emsp;宣告 print_dice輸出骰子六面點數<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        #include &lt;stdio.h&gt;
+
+                        void modify_dice(int dice_[][6], int modify_num, int modify_[][2]);
+                        // 操作骰子六面點數, 傳入當前玩家骰子, 骰子每次的修正次數, 修正方式
+                        int modify_mode(int modify_[][2], int count, int dice_num); 
+                        // 回傳修正方式, 傳入骰子每次的修正方式, 當下為第幾次修正, 骰子編號
+
+                        void roll_forward_1(int dice_[][6], int dice); // 向前滾一次
+                        void roll_rigth_2(int dice_[][6], int dice); // 向右滾一次
+
+                        void print_dice(int dice_[][6]); // 輸出骰子六面點數
+
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P2</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;再來寫主函式並宣告變數<br>
+                &emsp;&emsp;宣告整數 modify_num_A, modify_num_B 存放骰子修正次數<br>
+                &emsp;&emsp;宣告整數陣列 modify_A, modify_B 存放骰子操作方式<br>
+                &emsp;&emsp;宣告整數陣列 dice_A, dice_B 存放玩家 A, B 各自持有的兩骰子六面點數<br>
+                &emsp;&emsp;宣告整數陣列 points 存放玩家 A, B 各自的骰子分數總和<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        int main()
+                        {
+                            int modify_num_A, modify_num_B; // 骰子修正次數
+                            int modify_A[10][2], modify_B[10][2]; // 骰子操作方式
+                            int dice_A[2][6] = {{3,1,4,6,2,5},{3,1,4,6,2,5}}, dice_B[2][6] = {{3,1,4,6,2,5},{3,1,4,6,2,5}}; 
+                            // 骰子初始六面點數, 依序為: {前, 上, 後, 下, 右, 左}, 玩家A跟B各有兩骰子
+                            int points[2] = {0}; // points[0]表示A兩骰子的總和，points[1]表示B兩骰子的總和
+
+                      </code></pre> 
+                      <img src="img/ch12/dice_A.png" style="display:block;" width="48%" align="left">
+                      <img src="img/ch12/dice_B.png" style="display:block;" width="48%" align="right">
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P3</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;讓使用者輸入玩家 A 的骰子修正次數與修正方式<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        // 請輸入A的修正次數
+                        scanf("%d", &modify_num_A);
+
+                        // 請輸入A的修正方式
+                        for(int i = 0; i < modify_num_A; i++) // 修正次數有幾次輸入幾次
+                        {
+                            scanf("%d %d", &modify_A[i][0], &modify_A[i][1]); // x y, x 表示如何操作第一顆骰子，y 表示如何操作第二顆骰子
+                        }
+
+                      </code></pre> 
+                      <img src="img/ch12/modify_A.png" style="display:block; margin:left;" width="38%">
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P4</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;呼叫函式 modify_dice 對玩家 A 的骰子進行修正<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        // 對A玩家的骰子進行修正
+                        modify_dice(dice_A, modify_A, modify_num_A);
+                      </code></pre> 
+                  </section>
+                &emsp;&emsp;以下是呼叫到的函式，這裡還不用複製貼上<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        void modify_dice(int dice_[][6], int modify_num, int modify_[][2]) //傳入玩家A或B的骰子，骰子修正次數，骰子修正方式
+                        {
+                            int dice_num;  // 0 表示第一顆骰子, 1 表示第二顆骰子
+                            int mode; // 1 表示表示向前滾一次, 2 表示向右滾一次
+
+                            for(int i = 0; i < modify_num; i++) // 修正幾次執行幾次迴圈
+                            {   
+                                for(int j = 0; j < 2; j++) //  2 顆骰子，所以執行 2 次迴圈
+                                {
+                                    dice_num = j; // 表示當前操作第一顆骰子或第二顆骰子
+                                    mode = modify_mode(modify_, i, j); // 得到當前骰子要向前滾一次還是向右滾一次
+                                
+                                    if(mode == 1) // 向前滾一次
+                                        roll_forward_1( dice_, dice_num);
+                                    else if(mode == 2) // 向右滾一次
+                                        roll_rigth_2( dice_, dice_num);
+                                    else{}
+                                }
+                            }
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P5</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;讓使用者輸入玩家 B 的骰子修正次數與修正方式<br>
+                &emsp;&emsp;呼叫函式 modify_dice 進行修正<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        // 請輸入B的修正次數
+                        scanf("%d", &modify_num_B);
+
+                        // 請輸入B的修正方式
+                        for(int i = 0; i < modify_num_B; i++) // 修正次數有幾次輸入幾次
+                        {
+                            scanf("%d %d", &modify_B[i][0], &modify_B[i][1]);
+                        }
+
+                        // 對B玩家的骰子進行修正
+                        modify_dice(dice_B, modify_B, modify_num_B);
+
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P6</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;輸出A, B玩家各自持有的兩骰子六面點數<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        // 輸出A, B玩家的骰子六面點數
+                        print_dice(dice_A);
+                        print_dice(dice_B);
+
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P7</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;計算 A, B 玩家的骰子分數<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        // 計算骰子分數
+                        if(dice_A[0][1] == dice_A[1][1]) // A 的兩骰子點數相同則 0 分
+                            points[0] = 0;
+                        else
+                            points[0] = dice_A[0][1] +  dice_A[1][1];
+
+                        if(dice_B[0][1] == dice_B[1][1]) // B 的兩骰子點數相同則 0 分
+                            points[1] = 0;
+                        else
+                            points[1] = dice_B[0][1] +  dice_B[1][1];
+
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P8</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;比骰子大小，輸出贏家<br>
+                &emsp;&emsp;主函式結束<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                            // 比骰子大小，輸出贏家
+                            if(points[0] > points[1])
+                                printf("A win");
+                            else if(points[0] < points[1])
+                                printf("B win");
+                            else
+                                printf("Tie");
+
+                            return 0;
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P9</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;使用函式 modify_dice 修正骰子點數<br>
+                &emsp;&emsp;宣告整數 dice_num, mode 表示當前骰子和當前操作方式<br>
+                &emsp;&emsp;根據修正次數有幾次執行幾次迴圈，每次都操作兩骰子的六面點數<br>
+                &emsp;&emsp;呼叫函式 modify_mode 得到當前操作方式是向前滾一次或向右滾一次<br>
+                &emsp;&emsp;根據當前操作方式操作骰子
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        void modify_dice(int dice_[][6], int modify_num, int modify_[][2]) //傳入玩家A或B的骰子，骰子修正次數，骰子修正方式
+                        {
+                            int dice_num;  // 0 表示第一顆骰子, 1 表示第二顆骰子
+                            int mode; // 1 表示表示向前滾一次, 2 表示向右滾一次
+
+                            for(int i = 0; i < modify_num; i++) // 修正幾次執行幾次迴圈
+                            {   
+                                for(int j = 0; j < 2; j++) // 每次都需要修正 2 顆骰子，所以執行 2 次迴圈
+                                {
+                                    dice_num = j; // 表示當前操作第一顆骰子或第二顆骰子
+                                    mode = modify_mode(modify_, i, j); // 得到當前骰子要向前滾一次還是向右滾一次
+                                
+                                    if(mode == 1) // 向前滾一次
+                                        roll_forward_1( dice_, dice_num);
+                                    else if(mode == 2) // 向右滾一次
+                                        roll_rigth_2( dice_, dice_num);
+                                    else{}
+                                }
+                            }
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P10</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;使用函式 modify_mode 回傳操作方式<br>
+                &emsp;&emsp;1 表示向前滾一次， 2 表示向右滾一次<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        int modify_mode(int modify_[][2], int count, int dice_num)
+                        {
+                            if(modify_[count][dice_num] == 1)
+                                return 1; //向前滾一次
+                            else if(modify_[count][dice_num] == 2)
+                                return 2; //向右滾一次
+                            else
+                                return 0;
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P11</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;使用函式 roll_forward_1 操作骰子向前滾一次<br>
+                &emsp;&emsp;使用函式 roll_right_2 操作骰子向右滾一次<br>
+                  <section data-auto-animate>
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-11|13-21|"><script type="text/template">
+                        void roll_forward_1(int dice_[][6], int dice) // 向前滾一次
+                        {
+                            int temp = dice_[dice][0]; // 存放目前在前方的骰子點數
+
+                            for(int j = 0; j < 3; j++)
+                            {
+                                dice_[dice][j] = dice_[dice][j+1];
+                            }
+
+                            dice_[dice][3] = temp;
+                        }
+
+                        void roll_rigth_2(int dice_[][6], int dice) // 向右滾一次
+                        {
+                            int temp = dice_[dice][1];  // 存放目前在上方的骰子點數
+
+                            dice_[dice][1] = dice_[dice][5]; //上方骰子點數轉為左方骰子點數
+                            dice_[dice][5] = dice_[dice][3]; //左方骰子點數轉為下方骰子點數
+                            dice_[dice][3] = dice_[dice][4]; //下方骰子點數轉為右方骰子點數
+                            dice_[dice][4] = temp; //右方骰子點數轉為上方骰子點數
+                        }
+                      </script></code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P12</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+                &emsp;&emsp;使用函式 print_dice 輸出兩骰子六面點數<br>
+                &emsp;&emsp;程式結束<br>
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        void print_dice(int dice_[][6]) // 輸出兩骰子六面點數
+                        {
+                            for(int i = 0; i < 2; i++)
+                            {
+                                for(int j = 0; j < 6; j++)
+                                {
+                                    printf("%d ",dice_[i][j]);
+                                }
+                                printf("\n");
+                            }
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+
+
+
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
