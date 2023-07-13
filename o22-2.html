@@ -434,7 +434,7 @@
                             
                             scanf("%d", &side);
                             s.side = side;
-                            square_t *sq = (shape_t*)&s;
+                            shape_t *sq = (shape_t*)&s;
                             p = sq->perimeter(sq);
                             a = sq->area(sq);
                         }
@@ -465,7 +465,7 @@
                             t.s1 = s1;
                             t.s2 = s2;
                             t.s3 = s3;
-                            triangle_t *sq = (shape_t*)&t;
+                            shape_t *sq = (shape_t*)&t;
                             p = sq->perimeter(sq);
                             a = sq->area(sq);
                         }
