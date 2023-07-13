@@ -198,7 +198,7 @@
                         #include <stdio.h>
 
                         void modify_dice(int dice_[][6], int modify_[][2], int modify_num); // 操作骰子六面點數
-                        int modify_mode(int modify_[][2], int count, int dice_num);  // 回傳修正方式
+                        int modify_mode(int modify_[][2], int round, int dice_num);  // 回傳修正方式
                         void roll_forward_1(int dice_[][6], int dice); // 向前滾一次
                         void roll_rigth_2(int dice_[][6], int dice); // 向右滾一次
                         void print_dice(int dice_[][6]); // 輸出骰子六面點數
@@ -231,7 +231,7 @@
                             // 修正幾次執行幾次修正
                         }
 
-                        int modify_mode(int modify_[][2], int count, int dice_num)
+                        int modify_mode(int modify_[][2], int round, int dice_num)
                         {
                             // 選擇修正方式是向前滾一次還是向右滾一次
                         }
@@ -281,7 +281,7 @@
 
                         void modify_dice(int dice_[][6], int modify_num, int modify_[][2]);
                         // 操作骰子六面點數, 傳入當前玩家骰子, 骰子每次的修正次數, 修正方式
-                        int modify_mode(int modify_[][2], int count, int dice_num); 
+                        int modify_mode(int modify_[][2], int round, int dice_num); 
                         // 回傳修正方式, 傳入骰子每次的修正方式, 當下為第幾次修正, 骰子編號
 
                         void roll_forward_1(int dice_[][6], int dice); // 向前滾一次
@@ -557,11 +557,11 @@
                 &emsp;&emsp;1 表示向前滾一次， 2 表示向右滾一次<br>
                   <section data-auto-animate>
                       <pre><code data-trim data-noescape>
-                        int modify_mode(int modify_[][2], int count, int dice_num)
+                        int modify_mode(int modify_[][2], int round, int dice_num)
                         {
-                            if(modify_[count][dice_num] == 1)
+                            if(modify_[round][dice_num] == 1)
                                 return 1; //向前滾一次
-                            else if(modify_[count][dice_num] == 2)
+                            else if(modify_[round][dice_num] == 2)
                                 return 2; //向右滾一次
                             else
                                 return 0;
