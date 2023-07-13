@@ -190,6 +190,314 @@
                 </section>
             </section>
 
+            <section>
+                <h3>Function pointer(暫時頁面，待更改)</h3>
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left">
+                    &emsp;&emsp;推薦先看李根毅教授的影片<br>
+                    &emsp;&emsp;32.1 - 函式指標簡介 ～ 32.4 - 在函式間傳遞函式<br>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P1</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        #include &lt;stdio.h&gt;
+                        #include &lt;string.h&gt;
+                        #include &lt;math.h&gt;
+
+                        #define shapeText(TYPE) int (*perimeter)(struct TYPE*); 
+                                                int (*area)(struct TYPE*);
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P2</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        typedef struct shape_s { // Shape 物件, 沒有欄位
+                            shapeText(shape_s); 
+                        } shape_t;
+
+                        typedef struct circle_s {
+                            shapeText(circle_s);
+                            int radius;
+                        } circle_t;
+
+                        typedef struct rectangle_s {
+                            shapeText(rectangle_s);
+                            int width, height;
+                        } rectangle_t;
+
+                        typedef struct square_s{
+                            shapeText(square_s);
+                            int side;
+                        } square_t;
+
+                        typedef struct triangle_s {
+                            shapeText(triangle_s);
+                            int s1, s2, s3;
+                        } triangle_t;
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P3</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        int CirclePerimeter(circle_t *obj) { return 4 * 2 * obj->radius; } //圓周長
+                        int CircleArea(circle_t *obj) { return 4 * obj->radius * obj->radius; } //圓面積
+
+                        int RectanglePerimeter(rectangle_t *obj) { return 2 * (obj->width + obj->height);} //矩形周長
+                        int RectangleArea(rectangle_t *obj) { return obj->width * obj->height; } //矩形面積
+
+                        int SquarePerimeter(square_t *obj) { return 4 * obj->side;} //正方形周長
+                        int SquareArea(square_t *obj) { return obj->side * obj->side; } //正方形面積
+
+                        int TrianglePerimeter(triangle_t *obj) { return obj->s1 + obj->s2 + obj->s3;} //三角形周長
+                        int TriangleArea(triangle_t *obj) { //三角形面積
+                            int s = (obj->s1 + obj->s2 + obj->s3) / 2;
+                            return sqrt(s * (s - obj->s1) * (s - obj->s2) * (s - obj->s3));
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P4</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        void CircleNew(circle_t *obj) {
+                            obj->perimeter = CirclePerimeter;
+                            obj->area = CircleArea;
+                        }
+
+                        void RectangleNew(rectangle_t *obj) {
+                            obj->perimeter = RectanglePerimeter;
+                            obj->area = RectangleArea;
+                        }
+
+                        void SquareNew(square_t *obj) {
+                            obj->perimeter = SquarePerimeter;
+                            obj->area = SquareArea;
+                        }
+
+                        void TriangleNew(triangle_t *obj) {
+                            obj->perimeter = TrianglePerimeter;
+                            obj->area = TriangleArea;
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P5</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        int main() {
+                            int n ,p ,a ;// n為圖形總數, p為周長, a為面積
+                            int sum_p = 0, sum_a = 0;
+                            char shape[10] = {'\0'};
+                            
+                            scanf("%d", &n);
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P6</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        while(n > 0)
+                            {
+                                scanf("%s", shape);
+                                if(strcmp(shape , "circle") == 0)
+                                {
+                                    circle_t c;
+                                    CircleNew(&c); //宣告一個圓形物件
+                                    int radius;
+                                    
+                                    scanf("%d", &radius);
+                                    c.radius = radius;
+                                    shape_t *sq = (shape_t*)&c;
+                                    p = sq->perimeter(sq);
+                                    a = sq->area(sq);
+                                }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P7</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        else if(strcmp(shape , "rectangle") == 0)
+                                {
+                                    rectangle_t r;
+                                    RectangleNew(&r); //宣告一個矩形物件
+                                    int width,height;
+                                    
+                                    scanf("%d %d", &width, &height);
+                                    r.width = width;
+                                    r.height= height;
+                                    shape_t *sq = (shape_t*)&r;
+                                    p = sq->perimeter(sq);
+                                    a = sq->area(sq);
+                                }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P8</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        else if(strcmp(shape , "square") == 0)
+                        {
+                            square_t s;
+                            SquareNew(&s); //宣告一個正方形物件
+                            int side;
+                            
+                            scanf("%d", &side);
+                            s.side = side;
+                            square_t *sq = (shape_t*)&s;
+                            p = sq->perimeter(sq);
+                            a = sq->area(sq);
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P9</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        else if(strcmp(shape , "triangle") == 0)
+                        {
+                            triangle_t t;
+                            TriangleNew(&t); //宣告一個三角形物件
+                            int s1, s2, s3;
+                            
+                            scanf("%d %d %d", &s1, &s2, &s3);
+                            t.s1 = s1;
+                            t.s2 = s2;
+                            t.s3 = s3;
+                            triangle_t *sq = (shape_t*)&t;
+                            p = sq->perimeter(sq);
+                            a = sq->area(sq);
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
+            <section>
+                <h3 >解答P10</h3>
+                <section
+                data-no="8" 
+                data-positionx="0.8" 
+                data-positiony="0.03" 
+                data-scale="1" 
+                data-motionno="0"
+                style="text-align: left"><br><br>
+
+                  <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                                printf("%s %d %d\n",shape ,p ,a);
+                                sum_p += p;
+                                sum_a += a;
+                                n--;
+                            }
+                            printf("%d %d\n",sum_p ,sum_a);
+                        }
+                      </code></pre> 
+                  </section>
+                </section>
+            </section>
+
 
         </div>
     </div>
