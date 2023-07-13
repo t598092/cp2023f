@@ -154,7 +154,7 @@
                         void changenum_int(int t);
 
                         int main(){
-                            int temp_arr[1] = {0};
+                            int temp_arr[5] = {0};
                             int temp_int = 0;
                             
                             changenum_arr(temp_arr);
@@ -168,7 +168,7 @@
                             t[0] = 10;
                         }
 
-                        void changenum_int(int t){ // 傳變數傳值，不會更動到原本的變數
+                        void changenum_var(int t){ // 傳變數傳值，不會更動到原本的變數
                             t = 10;
                         }
                       </code></pre> 
@@ -357,7 +357,7 @@
                   <section data-auto-animate>
                       <pre><code data-trim data-noescape>
                         // 對A玩家的骰子進行修正
-                        modify_dice(dice_A, modify_A, modify_num_A);
+                        modify_dice(dice_A, modify_num_A, modify_A);
                       </code></pre> 
                   </section>
                 &emsp;&emsp;以下是呼叫到的函式，這裡還不用複製貼上<br>
@@ -411,7 +411,7 @@
                         }
 
                         // 對B玩家的骰子進行修正
-                        modify_dice(dice_B, modify_B, modify_num_B);
+                        modify_dice(dice_B, modify_num_B, modify_B);
 
                       </code></pre> 
                   </section>
