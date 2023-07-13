@@ -576,7 +576,7 @@
                 &emsp;&emsp;使用函式 roll_right_2 操作骰子向右滾一次<br>
                   <section data-auto-animate>
                     <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-11|13-21|"><script type="text/template">
-                        void roll_forward_1(int dice_[][6], int dice) // 向前滾一次
+                        void roll_forward_1(int dice_[][6], int dice) // 向前滾一次，傳入玩家A或B的骰子、當前是第一顆還是第二顆骰子
                         {
                             int temp = dice_[dice][0]; // 存放目前在前方的骰子點數
 
