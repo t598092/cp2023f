@@ -159,20 +159,20 @@
                       <pre><code data-trim data-noescape>
                         #include &lt;stdio.h&gt;
                         void changenum_arr(int t[]);
-                        void changenum_int(int t);
+                        void changenum_var(int t);
 
                         int main(){
                             int temp_arr[5] = {0};
-                            int temp_int = 0;
+                            int temp_var = 0;
                             
                             changenum_arr(temp_arr);
-                            changenum_int(temp_int);
+                            changenum_var(temp_var);
 
                             printf("%d\n", temp_arr[0]);
-                            printf("%d", temp_int);
+                            printf("%d", temp_var);
                         }
 
-                        void changenum_arr(int t[]){ // 傳陣列傳址，會更動到原本的變數
+                        void changenum_arr(int t[]){ // 傳陣列傳址，會更動到原本的陣列
                             t[0] = 10;
                         }
 
@@ -199,8 +199,8 @@
 
                         void modify_dice(int dice_[][6], int modify_[][2], int modify_num); // 操作骰子六面點數
                         int modify_mode(int modify_[][2], int round, int dice_num);  // 回傳修正方式
-                        void roll_forward_1(int dice_[][6], int dice); // 向前滾一次
-                        void roll_rigth_2(int dice_[][6], int dice); // 向右滾一次
+                        void roll_forward_1(int dice_[][6], int dice_num); // 向前滾一次
+                        void roll_rigth_2(int dice_[][6], int dice_num); // 向右滾一次
                         void print_dice(int dice_[][6]); // 輸出骰子六面點數
 
                         int main()
@@ -236,14 +236,14 @@
                             // 選擇修正方式是向前滾一次還是向右滾一次
                         }
 
-                        void roll_forward_1(int dice_[][6], int dice)
+                        void roll_forward_1(int dice_[][6], int dice_num)
                         {
                             int temp = dice_[dice][0]; // 存放目前在前方的骰子點數
 
                             // 向前滾一次
                         }
 
-                        void roll_forward_2(int dice_[][6], int dice)
+                        void roll_forward_2(int dice_[][6], int dice_num)
                         {
                             int temp = dice_[dice][1]; // 存放目前在上方的骰子點數
 
@@ -284,8 +284,8 @@
                         int modify_mode(int modify_[][2], int round, int dice_num); 
                         // 回傳修正方式, 傳入骰子每次的修正方式, 當下為第幾次修正, 骰子編號
 
-                        void roll_forward_1(int dice_[][6], int dice); // 向前滾一次
-                        void roll_rigth_2(int dice_[][6], int dice); // 向右滾一次
+                        void roll_forward_1(int dice_[][6], int dice_num); // 向前滾一次
+                        void roll_rigth_2(int dice_[][6], int dice_num); // 向右滾一次
 
                         void print_dice(int dice_[][6]); // 輸出骰子六面點數
 
@@ -584,26 +584,26 @@
                 &emsp;&emsp;使用函式 roll_right_2 操作骰子向右滾一次<br>
                   <section data-auto-animate>
                     <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-11|13-21|"><script type="text/template">
-                        void roll_forward_1(int dice_[][6], int dice) // 向前滾一次，傳入玩家A或B的骰子、當前是第一顆還是第二顆骰子
+                        void roll_forward_1(int dice_[][6], int dice_num) // 向前滾一次
                         {
-                            int temp = dice_[dice][0]; // 存放目前在前方的骰子點數
-
+                            int temp = dice_[dice_num][0]; // 存放目前在前方的骰子點數
+                        
                             for(int j = 0; j < 3; j++)
                             {
-                                dice_[dice][j] = dice_[dice][j+1];
+                                dice_[dice_num][j] = dice_[dice_num][j+1];
                             }
-
-                            dice_[dice][3] = temp;
+                        
+                            dice_[dice_num][3] = temp;
                         }
-
-                        void roll_rigth_2(int dice_[][6], int dice) // 向右滾一次
+                        
+                        void roll_rigth_2(int dice_[][6], int dice_num) // 向右滾一次
                         {
-                            int temp = dice_[dice][1];  // 存放目前在上方的骰子點數
-
-                            dice_[dice][1] = dice_[dice][5]; //上方骰子點數轉為左方骰子點數
-                            dice_[dice][5] = dice_[dice][3]; //左方骰子點數轉為下方骰子點數
-                            dice_[dice][3] = dice_[dice][4]; //下方骰子點數轉為右方骰子點數
-                            dice_[dice][4] = temp; //右方骰子點數轉為上方骰子點數
+                            int temp = dice_[dice_num][1];  // 存放目前在上方的骰子點數
+                        
+                            dice_[dice_num][1] = dice_[dice_num][5]; //上方骰子點數轉為左方骰子點數
+                            dice_[dice_num][5] = dice_[dice_num][3]; //左方骰子點數轉為下方骰子點數
+                            dice_[dice_num][3] = dice_[dice_num][4]; //下方骰子點數轉為右方骰子點數
+                            dice_[dice_num][4] = temp; //右方骰子點數轉為上方骰子點數
                         }
                       </script></code></pre> 
                   </section>
