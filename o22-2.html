@@ -67,7 +67,8 @@
             <section>
                 <h3>圖形的周長與面積（進階題1）</h3>
                 </h3>
-                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                <section 
+                data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>
                     使用以下 struct 定義 shape(圖形), circle(圓), rectangle(矩形), square(正方形), triangle(三角形)。 
                     <br><br>圓有半徑，矩形有長寬，正方形有邊長，三角形有三個邊。
@@ -80,7 +81,8 @@
 
             <section>
                 <h3>圖形的周長與面積（進階題1）</h3>
-                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                <section 
+                data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>
                     <span style="color:red;">
                         本題須使用以下 struct定義,以及定義與實做相對的 function pointer 的 function 才計分。
@@ -103,7 +105,8 @@
 
             <section>
                 <h3>圖形的周長與面積（進階題1）</h3>
-                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                <section 
+                data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
                     <img src="img/ch17-1/demo.png" style="display:block; margin:auto;">
                 </section>
@@ -111,7 +114,8 @@
 
             <section>
                 <h3>Tips</h3>
-                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                <section
+                data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>
                     <section data-auto-animate>
                         <pre><code data-trim data-noescape>           
@@ -159,7 +163,8 @@
 
             <section>
                 <h3>Tips</h3>
-                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                <section 
+                data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>  
                     三角形面積:<br>
                     <img src="img/ch17-1/formula.png" style="display:block; margin:auto;"><br><br>
@@ -168,9 +173,10 @@
 
             <section>
                 <h3>Function pointer</h3>
-                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                <section 
+                data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>  
-                    &emsp;&emsp;先複習指標使用<br>
+                    &emsp;&emsp;先複習指標使用
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>
                         #include &lt;stdio.h&gt;
@@ -178,8 +184,8 @@
                         int main()
                         {
                             int a = 3;
-                            int *b = &a;
-                            *b = 5;
+                            int *b = &a; // int * :整數指標(整數型態的指標), & :取址運算子
+                            *b = 5; // * :間接運算子
                             printf("a: %d\n", a);
                             return 0;
                         }
@@ -191,18 +197,111 @@
             </section>
 
             <section>
-                <h3>Function pointer(暫時頁面，待更改)</h3>
-                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
-                    style="text-align: left">
-                    &emsp;&emsp;推薦先看李根毅教授的影片<br>
-                    &emsp;&emsp;32.1 - 函式指標簡介 ～ 32.4 - 在函式間傳遞函式<br>
+                <h3>Function pointer</h3>
+                <section 
+                data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>  
+                    &emsp;函式呼叫<br><br>
+                    <img src="img/ch17-1/func_ptr.png" style="display:block; margin:auto;"><br><br>
+                </section>
+            </section>
+
+            <section>
+                <h3>Function pointer</h3>
+                <section 
+                data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>  
+                    &emsp;&emsp;練習使用函式指標
+                    <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        #include &lt;stdio.h&gt;
+
+                        int add(int a, int b);
+                        int multiply(int a, int b);
+
+                        int main()
+                        {
+                            int (*op)(int, int) = add; // op 是函式指標，指向型態為 int (int, int) 的函式
+                            int result = op(3, 5); //傳入引數 3, 5 至 op 指向的函式
+                            printf("%d ", result);
+
+                            op = multiply; // op 可以指向任意型態為 int (int, int) 的函式
+                            result = op(3, 5);
+                            printf("%d", result);
+
+                            return 0;
+                        }
+
+                        int add(int a, int b)
+                        {
+                            return a+b;
+                        }
+
+                        int multiply(int a, int b)
+                        {
+                            return a*b
+                        }
+                      </code></pre> 
+                    &emsp;&emsp;output:<br>
+                    &emsp;&emsp;8 15<br>
+                    </section>
+                </section>
+            </section>
+
+            <section>
+                <h3>Function pointer</h3>
+                <section 
+                data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>  
+                    &emsp;&emsp;練習將函式指標應用於函式參數<br>
+                    <section data-auto-animate>
+                      <pre><code data-trim data-noescape>
+                        #include &lt;stdio.h&gt;
+
+                        int calculate(int result, int (*op)(int, int)); //需傳入整數參數與函式指標
+                        int add(int a, int b);
+                        int multiply(int a, int b);
+
+                        int main()
+                        {
+                            int result = 1;
+
+                            printf("%d ",calculate(result, add)); //printf("%d ",calculate(result, &add));
+                            printf("%d ",calculate(result, multiply)); //printf("%d ",calculate(result, &multiply));
+
+                            return 0;
+                        }
+
+                        int add(int a, int b)
+                        {
+                            return a+b;
+                        }
+
+                        int multiply(int a, int b)
+                        {
+                            return a*b;
+                        }
+
+                        int calculate(int result, int (*op)(int, int)) //需傳入整數參數與函式指標
+                        {
+                            for(int i=2; i<=5; i++)
+                            {
+                                result = op(result, i);
+                            }
+
+                            return result;
+                        }
+                      </code></pre> 
+                    &emsp;&emsp;output:<br>
+                    &emsp;&emsp;15 120<br>
+                    </section>
                 </section>
             </section>
 
             <section>
                 <h3 >解答P1</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -215,8 +314,9 @@
                         #include &lt;string.h&gt;
                         #include &lt;math.h&gt;
 
-                        #define shapeText(TYPE) int (*perimeter)(struct TYPE*); 
-                                                int (*area)(struct TYPE*);
+                        // define 為 C 語言中在預處理階段對程式碼進行字串替換， \ 表示跳脫字元
+                        #define shapeText(TYPE) int (*perimeter)(struct TYPE*); \ //TYPE型態的指標
+                                                int (*area)(struct TYPE*); //TYPE型態的指標
                       </code></pre> 
                   </section>
                 </section>
@@ -225,7 +325,7 @@
             <section>
                 <h3 >解答P2</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -233,31 +333,51 @@
                 style="text-align: left"><br><br>
 
                   <section data-auto-animate>
-                      <pre><code data-trim data-noescape>
+                      <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-8|9-25|27-43|"><script type="text/template">
                         typedef struct shape_s { // Shape 物件, 沒有欄位
                             shapeText(shape_s); 
+                            /*
+                            int (*perimeter)(struct shape_s*); // 宣告一個函式指標 perimeter 指向型態為 int (struct shape_s*) 的函式
+                            int (*area)(struct shape_s*); // 宣告一個函式指標 area 指向型態為 int (struct shape_s*) 的函式
+                            */
                         } shape_t;
 
                         typedef struct circle_s {
                             shapeText(circle_s);
+                            /*
+                            int (*perimeter)(struct shape_s*); // 宣告一個函式指標 perimeter 指向型態為 int (struct circle_s*) 的函式
+                            int (*area)(struct shape_s*); // 宣告一個函式指標 area 指向型態為 int (struct circle_s*) 的函式
+                            */
                             int radius;
                         } circle_t;
 
                         typedef struct rectangle_s {
                             shapeText(rectangle_s);
+                            /*
+                            int (*perimeter)(struct shape_s*); // 宣告一個函式指標 perimeter 指向型態為 int (struct rectangle_s*) 的函式
+                            int (*area)(struct shape_s*); // 宣告一個函式指標 area 指向型態為 int (struct rectangle_s*) 的函式
+                            */
                             int width, height;
                         } rectangle_t;
 
                         typedef struct square_s{
                             shapeText(square_s);
+                            /*
+                            int (*perimeter)(struct shape_s*); // 宣告一個函式指標 perimeter 指向型態為 int (struct square_s*) 的函式
+                            int (*area)(struct shape_s*); // 宣告一個函式指標 area 指向型態為 int (struct square_s*) 的函式
+                            */
                             int side;
                         } square_t;
 
                         typedef struct triangle_s {
                             shapeText(triangle_s);
+                            /*
+                            int (*perimeter)(struct shape_s*); // 宣告一個函式指標 perimeter 指向型態為 int (struct triangle_s*) 的函式
+                            int (*area)(struct shape_s*); // 宣告一個函式指標 area 指向型態為 int (struct triangle_s*) 的函式
+                            */
                             int s1, s2, s3;
                         } triangle_t;
-                      </code></pre> 
+                      </script></code></pre> 
                   </section>
                 </section>
             </section>
@@ -265,7 +385,7 @@
             <section>
                 <h3 >解答P3</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -273,22 +393,44 @@
                 style="text-align: left"><br><br>
 
                   <section data-auto-animate>
-                      <pre><code data-trim data-noescape>
-                        int CirclePerimeter(circle_t *obj) { return 4 * 2 * obj->radius; } //圓周長
-                        int CircleArea(circle_t *obj) { return 4 * obj->radius * obj->radius; } //圓面積
+                      <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-17|19-36|"><script type="text/template">
+                        int CirclePerimeter(circle_t *obj)  //計算圓周長
+                        {
+                            return 4 * 2 * obj->radius; 
+                        } 
+                        int CircleArea(circle_t *obj)  //計算圓面積
+                        { 
+                            return 4 * obj->radius * obj->radius; 
+                        }
 
-                        int RectanglePerimeter(rectangle_t *obj) { return 2 * (obj->width + obj->height);} //矩形周長
-                        int RectangleArea(rectangle_t *obj) { return obj->width * obj->height; } //矩形面積
+                        int RectanglePerimeter(rectangle_t *obj) //計算矩形周長
+                        { 
+                            return 2 * (obj->width + obj->height);
+                        } 
+                        int RectangleArea(rectangle_t *obj) //計算矩形面積
+                        { 
+                            return obj->width * obj->height; 
+                        } 
 
-                        int SquarePerimeter(square_t *obj) { return 4 * obj->side;} //正方形周長
-                        int SquareArea(square_t *obj) { return obj->side * obj->side; } //正方形面積
+                        int SquarePerimeter(square_t *obj) //計算正方形周長
+                        { 
+                            return 4 * obj->side;
+                        } 
+                        int SquareArea(square_t *obj) //計算正方形面積
+                        { 
+                            return obj->side * obj->side; 
+                        } 
 
-                        int TrianglePerimeter(triangle_t *obj) { return obj->s1 + obj->s2 + obj->s3;} //三角形周長
-                        int TriangleArea(triangle_t *obj) { //三角形面積
+                        int TrianglePerimeter(triangle_t *obj) //計算三角形周長
+                        { 
+                            return obj->s1 + obj->s2 + obj->s3;
+                        } 
+                        int TriangleArea(triangle_t *obj) //計算三角形面積
+                        { 
                             int s = (obj->s1 + obj->s2 + obj->s3) / 2;
                             return sqrt(s * (s - obj->s1) * (s - obj->s2) * (s - obj->s3));
                         }
-                      </code></pre> 
+                      </script></code></pre> 
                   </section>
                 </section>
             </section>
@@ -296,7 +438,7 @@
             <section>
                 <h3 >解答P4</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -305,22 +447,22 @@
 
                   <section data-auto-animate>
                       <pre><code data-trim data-noescape>
-                        void CircleNew(circle_t *obj) {
-                            obj->perimeter = CirclePerimeter;
-                            obj->area = CircleArea;
+                        void CircleNew(circle_t *obj) { // 需傳入circle_t型態的指標作為參數
+                            obj->perimeter = CirclePerimeter; //將 obj 的函式指標 perimeter 指向函式 CirclePerimeter
+                            obj->area = CircleArea; //將 obj 的函式指標 area 指向函式 CirclePerimeter
                         }
 
-                        void RectangleNew(rectangle_t *obj) {
+                        void RectangleNew(rectangle_t *obj) { // 需傳入rectangle_t型態的指標作為參數
                             obj->perimeter = RectanglePerimeter;
                             obj->area = RectangleArea;
                         }
 
-                        void SquareNew(square_t *obj) {
+                        void SquareNew(square_t *obj) { // 需傳入square_t型態的指標作為參數
                             obj->perimeter = SquarePerimeter;
                             obj->area = SquareArea;
                         }
 
-                        void TriangleNew(triangle_t *obj) {
+                        void TriangleNew(triangle_t *obj) { // 需傳入triangle_t型態的指標作為參數
                             obj->perimeter = TrianglePerimeter;
                             obj->area = TriangleArea;
                         }
@@ -332,7 +474,7 @@
             <section>
                 <h3 >解答P5</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -343,10 +485,10 @@
                       <pre><code data-trim data-noescape>
                         int main() {
                             int n ,p ,a ;// n為圖形總數, p為周長, a為面積
-                            int sum_p = 0, sum_a = 0;
-                            char shape[10] = {'\0'};
+                            int sum_p = 0, sum_a = 0; // sum_p為總周長，sum_a為總面積
+                            char shape[10] = {'\0'}; // 存放使用者輸入的圖形名稱字串
                             
-                            scanf("%d", &n);
+                            scanf("%d", &n); // 讓使用者輸入需要輸入幾個圖形
                       </code></pre> 
                   </section>
                 </section>
@@ -355,7 +497,7 @@
             <section>
                 <h3 >解答P6</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -364,16 +506,16 @@
 
                   <section data-auto-animate>
                       <pre><code data-trim data-noescape>
-                        while(n > 0)
+                        while(n > 0) // 當還沒輸入完
                             {
-                                scanf("%s", shape);
+                                scanf("%s", shape); // 讓使用者輸入圖形名稱
                                 if(strcmp(shape , "circle") == 0)
                                 {
                                     circle_t c;
                                     CircleNew(&c); //宣告一個圓形物件
                                     int radius;
                                     
-                                    scanf("%d", &radius);
+                                    scanf("%d", &radius); // 讓使用者輸入圓形半徑
                                     c.radius = radius;
                                     shape_t *sq = (shape_t*)&c;
                                     p = sq->perimeter(sq);
@@ -387,7 +529,7 @@
             <section>
                 <h3 >解答P7</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -402,7 +544,7 @@
                                     RectangleNew(&r); //宣告一個矩形物件
                                     int width,height;
                                     
-                                    scanf("%d %d", &width, &height);
+                                    scanf("%d %d", &width, &height); // 讓使用者輸入矩形邊長
                                     r.width = width;
                                     r.height= height;
                                     shape_t *sq = (shape_t*)&r;
@@ -417,7 +559,7 @@
             <section>
                 <h3 >解答P8</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -432,7 +574,7 @@
                             SquareNew(&s); //宣告一個正方形物件
                             int side;
                             
-                            scanf("%d", &side);
+                            scanf("%d", &side); // 讓使用者輸入正方形邊長
                             s.side = side;
                             shape_t *sq = (shape_t*)&s;
                             p = sq->perimeter(sq);
@@ -446,7 +588,7 @@
             <section>
                 <h3 >解答P9</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
@@ -461,7 +603,7 @@
                             TriangleNew(&t); //宣告一個三角形物件
                             int s1, s2, s3;
                             
-                            scanf("%d %d %d", &s1, &s2, &s3);
+                            scanf("%d %d %d", &s1, &s2, &s3); // 讓使用者輸入三角形邊長
                             t.s1 = s1;
                             t.s2 = s2;
                             t.s3 = s3;
@@ -477,7 +619,7 @@
             <section>
                 <h3 >解答P10</h3>
                 <section
-                data-no="8" 
+                data-no="8"
                 data-positionx="0.8" 
                 data-positiony="0.03" 
                 data-scale="1" 
