@@ -123,7 +123,8 @@
                             #include &lt;string.h&gt;
                             #include &lt;math.h&gt;
 
-                            #define shapeText(TYPE) int (*perimeter)(struct TYPE*); \
+                            #define shapeText(TYPE) char name[10]; \
+                                                    int (*perimeter)(struct TYPE*); \
                                                     int (*area)(struct TYPE*);
 
                             typedef struct shape_s {
