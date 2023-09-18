@@ -679,7 +679,8 @@
             data-scale="1" 
             data-motionno="0"
             style="text-align: left"><br><br>
-            &emsp;&emsp;判斷牌組中是否有重複點數的牌<br>
+            &emsp;&emsp;接著判斷牌型 四條(8)、三條(4)、兩對(3)、一對(2) 等牌型是否成立 <br>
+            &emsp;&emsp;先判斷牌組中是否有重複點數的牌<br>
             &emsp;&emsp;將計算完的結果存至陣列 same_num
               <section data-auto-animate>
                   <pre><code data-trim data-noescape>
@@ -714,7 +715,7 @@
             &emsp;&emsp;若 四條(8) 成立，優先回傳 8
               <section data-auto-animate>
                   <pre><code data-trim data-noescape>
-                    // 根據same_num可以判斷是否為四條(8)、三條(4)、兩對(3)、一對(2)
+                    // 根據same_num可以判斷是否為四條(8)、三條(4)、一對(2)
                     int pair = 0; // Pair的數量
 
                     for (int i = 0; i < 4; i++)
