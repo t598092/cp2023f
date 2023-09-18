@@ -166,48 +166,6 @@
                         }
                     </code></pre>
                 </section>
-
-                <section
-                data-no="17"
-                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br><br>
-                    Face * 10 + Suit<br><br>
-                    例 :<br>
-                    QH &ensp;KD &ensp;AC &ensp;2D &ensp;3S<br>
-                    122 &ensp;131 &ensp;140 &ensp;21 &ensp;33 &ensp;排序後&ensp;->&ensp; 21 &ensp;33 &ensp;122 &ensp;131 &ensp;140<br><br>
-                    [11, 12, 13, 14, &ensp;2]&ensp;->&ensp;20, 110, 120, 130, 140&ensp;(110 - 20 = 90)<br><br>
-                    [12, 13, 14, &ensp;2, &ensp;3]&ensp;->&ensp;20, &ensp;30, 120, 130, 140&ensp;(120 - 30 = 90)<br><br>
-                    [13, 14, &ensp;2, &ensp;3, &ensp;4]&ensp;->&ensp;20, &ensp;30, &ensp;40, 130, 140&ensp;(130 - 40 = 90)<br><br>
-                    [14, &ensp;2, &ensp;3, &ensp;4,  &ensp;5]&ensp;->&ensp;20, &ensp;30, &ensp;40, &ensp;50, 140&ensp;(140 - 50 = 90)<br><br>
-                    可用這點來判斷牌組是否為順子。
-                </section>
-    
-                <section 
-                data-no="17"
-                data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br><br>
-                    &emsp;Face * 10 + Suit<br><br>
-                    &emsp;例 :<br>
-                    &emsp;9D 8C 8S 8H 9S<br>
-                    &emsp;91 80 83 82 93 排序後 -> 80 82 83 91 93<br><br>
-                        <pre><code data-trim data-noescape>           
-                        for(int i = 0; i &lt; 4; i++)
-                        {
-                            for(int j = i + 1; j &lt;= 4; j++)
-                            {
-                                if(set[i] / 10 == set[j] / 10)
-                                {
-                                    same_num[i]++; // 跳過相同數字的牌
-                                }
-                            }
-                            i += same_num[i];
-                        }
-                        </code></pre>
-                    <br>
-                    &emsp;same_num[] = {2,0,0,1},<br>
-                    &emsp;2 表示排序後index = 0 的後面有兩張牌與它數字相同，<br>
-                    &emsp;且same_num[]中有兩個非0數字，就代表有兩對。
-                </section>
             </section>
         
             <section>
