@@ -147,12 +147,12 @@
                 data-no="17"
                  data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>
-                    <pre><code data-trim data-noescape>           
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-16|18-30|32-48|"><script type="text/template">          
                         #include &lt;stdio.h&gt;
                         #include &lt;stdlib.h&gt;
                         #include &lt;stdbool.h&gt;
                         
-                        float deal(char, char);
+                        float deal(char, char); // 將使用者輸入的字元轉換為數字
 
                         int main()
                         {
@@ -163,14 +163,14 @@
                             bool is_stop = false; // 判斷是否players全部結束
                             int players, bet, count = 1, hand_cards = 0; // players人數(不包含電腦), players下注數, 記錄當下是第幾個player, 手牌數
                             float min_point; // players中點數最小的值
-                            char input_point[15]={'\0'}; // 存輸入字串
+                            char in_str[15]={'\0'}; // 存輸入字串
                             
                             // 輸入 Players人數
 
                             // 輸入 Players 下注數 
 
                             // Computer 和 Players 各發一張牌
-                            fgets(input_point, 15, stdin);
+                            fgets(in_str, 15, stdin);
 
                             // 丟到deal()換成對應點數，存至points[]
 
@@ -196,7 +196,7 @@
                         {
 
                         }
-                    </code></pre>
+                    </script></code></pre>
                 </section>
             </section>
 
@@ -226,26 +226,26 @@
 
                             int main()
                             {
-                                int a, b, c;
-                                scanf("%d", &a);
-                                printf("a = %d, ", a);
-                                scanf("%d", &b);
-                                printf("b = %d, ", b);
-                                scanf("%d", &c);
-                                printf("c = %d ", c);
-
+                                char a, b, c;
+                                scanf("%c", &a);
+                                printf("a = %c, ", a);
+                                scanf("%c", &b);
+                                printf("b = %c, ", b);
+                                scanf("%c", &c);
+                                printf("c = %c ", c);
                                 return 0;
                             }
                           </code></pre> 
-                        &emsp;&emsp;input1:<br>
-                        &emsp;&emsp;1 2 3<br>
-                        &emsp;&emsp;input2:<br>
-                        &emsp;&emsp;1<br>
-                        &emsp;&emsp;2<br>
-                        &emsp;&emsp;3<br>
-                        &emsp;&emsp;output:<br>
-                        &emsp;&emsp;a = 1, b = 2, c = 3
                     </section>
+                    &emsp;&emsp;input1:<br>
+                    &emsp;&emsp;123<br>
+                    &emsp;&emsp;input2:<br>
+                    &emsp;&emsp;1<br>
+                    &emsp;&emsp;2<br>
+                    &emsp;&emsp;output1:<br>
+                    &emsp;&emsp;a = 1, b = 2, c = 3<br>
+                    &emsp;&emsp;output2:<br>
+                    &emsp;&emsp;a = 1, b = \n, c = 2
                 </section>
             </section>
 
@@ -265,12 +265,12 @@
 
                             int main(){
                                 char ch;
-
                                 while(ch != '\n')
                                 {
                                     ch = getchar();
                                     printf("%c", ch);
                                 }
+                                printf("1");
 
                                 return 0;
                             }
@@ -282,11 +282,11 @@
 
                             int main(){
                                 char ch;
-
                                 while((ch = getchar()) != '\n') // 這樣不會印出'\n'
                                 {
                                     printf("%c", ch);
                                 }
+                                printf("1");
 
                                 return 0;
                             }
@@ -375,8 +375,9 @@
                         int players, count = 1, hand_cards = 0; // players人數(不包含電腦), players下注數, 記錄當下是第幾個player, 發牌數
                         float min_point; // players中點數最小的值
                         char in_str[15] = {'\0'}; // 存輸入字串
-                        char ch;
-                        int i = 0,  p = 0;
+                      
+                        char ch; // 跟函式 getchar 搭配使用
+                        int i = 0; // 跟迴圈搭配使用、作為陣列索引值
                   </code></pre> 
               </section>
             </section>
@@ -459,7 +460,8 @@
                     }while(p != players + 1);
                     i = 0;
                   </code></pre> 
-              </section>
+              </section><br>
+              <img src="img/ch10/in_str.jpg" style="display:block; margin:auto;" width="90%"><br>
             </section>
            </section>
 
@@ -727,7 +729,7 @@
                                 {
                                     printf("Player%d +%d\n", k+1,output[k]);
                                 }
-                                else // 若賠, 則直接輸出
+                                else // 若沒賺, 則直接輸出
                                 {
                                     printf("Player%d %d\n", k+1,output[k]);
                                 }
