@@ -267,7 +267,7 @@
                 &emsp;&emsp;若被除數為負數，將布林值 signed_1 設定為 true ， 用來表示被除數為負數<br>
                 &emsp;&emsp;若除數為負數，將布林值 signed_2 設定為 true ， 用來表示除數為負數<br>
                 &emsp;&emsp;將位數全部向前移位去負號，以便運算，並將原本的最後一位設定為結束符號<br>
-                &emsp;&emsp;根據被除數和除數的正負判斷商的正負，是則將布林值 signed_Q 設定為 true
+                &emsp;&emsp;根據被除數和除數的正負判斷商是否為負，是則將布林值 signed_Q 設定為 true
                   <section data-auto-animate>
                       <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-13|15-25|27-29|"><script type="text/template">   
                         // 如果被除數或除數為負數，則記錄其為負數，只取數字(i.e. index都往前一格)，ex: -125 儲存成 125(變成 正數除以正數)
