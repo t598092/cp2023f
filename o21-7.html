@@ -204,7 +204,14 @@
                 data-scale="1" 
                 data-motionno="0"
                 style="text-align: left"><br><br>
-                &emsp;&emsp;首先引入函式庫與宣告變數
+                &emsp;首先引入函式庫與宣告變數<br>
+                &emsp;宣告4個字元陣列分別存放被除數(餘數)、除數、除數副本和商數<br>
+                &emsp;宣告整數變數 a, k 分別存放被除數、除數的個位數索引值<br>
+                &emsp;宣告整數變數 a_k, a_k_copy 分別存放兩數相差位數、相差位數副本<br>
+                &emsp;宣告整數變數 index, count 分別存放相減當下的索引值、共相減幾次<br>
+                &emsp;宣告整數變數 mode 表示如何處理兩數相減<br>
+                &emsp;宣告布林值 start, is_zero 分別用於正確輸出商數與餘數、判斷餘數是否為零<br>
+                &emsp;宣告布林值 signed_1, signed_2, signed_Q 分別判斷被除數、除數與商是否為負
                   <section data-auto-animate>
                       <pre><code data-trim data-noescape>
                         #include &lt;stdio.h&gt;
