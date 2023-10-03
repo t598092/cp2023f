@@ -267,7 +267,7 @@
                 &emsp;&emsp;若被除數為負數，將布林值 signed_1 設定為 true ， 用來表示被除數為負數<br>
                 &emsp;&emsp;若除數為負數，將布林值 signed_2 設定為 true ， 用來表示除數為負數<br>
                 &emsp;&emsp;將位數全部向前移位去負號，以便運算，並將原本的最後一位設定為結束符號<br>
-                &emsp;&emsp;根據被除數和除數的正負判斷商是否為負，是則將布林值 signed_Q 設定為 true
+                &emsp;&emsp;根據被除數和除數的正負判斷商是否為負，是將布林值 signed_Q 設定為 true
                   <section data-auto-animate>
                       <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-13|15-25|27-29|"><script type="text/template">   
                         // 如果被除數或除數為負數，則記錄其為負數，只取數字(i.e. index都往前一格)，ex: -125 儲存成 125(變成 正數除以正數)
@@ -315,8 +315,7 @@
                 style="text-align: left"><br><br>
                 &emsp;&emsp;將被除數和除數相差的位數存進變數 a_k 與 a_k_copy<br>
                 &emsp;&emsp;將目前的除數存進字元陣列 Divisor_copy<br>
-                &emsp;&emsp;將除數放大10的(a-k)次方倍，令程式執行時間大幅減少<br>
-                &emsp;&emsp;因為除法令被除數和除數不斷相減，而一次減十倍比減十次快很多，以此類推
+                &emsp;&emsp;將除數放大10的(a-k)次方倍，令程式執行時間大幅減少
                   <section data-auto-animate>
                       <pre><code data-trim data-noescape>
                         a_k = a - k; // 被除數和除數相差的位數
@@ -333,6 +332,7 @@
                         }
 
                         // 除數放大10的(a-k)次方倍，這樣程式執行時間能大幅減少 (長除法補零)
+                        // 除法過程中被除數和除數不斷相減，而一次減十倍比減十次快很多，以此類推
                         for(int i = k+1; i <= a; i++)
                         {
                             Divisor[i] = '0';
@@ -397,7 +397,7 @@
                       <pre><code data-trim data-noescape>
                         if(mode == 0) // 表示 被除數 = 除數 * 10的(a_k)次方
                         {
-                            count++;
+                            count++; // 初始值 0，加一後變為 1
                             for(int i = 0; i < a_k;i++)
                             {
                                 count = count * 10;
@@ -426,10 +426,10 @@
                 data-motionno="0"
                 style="text-align: left"><br><br>
                 &emsp;&emsp;若 mode 為 1 ，表示被除數大於除數<br>
-                &emsp;&emsp;從個位數（第 a 個位置）開始往前做減法<br>
+                &emsp;&emsp;從第 a 個位置（個位數）開始往前做減法<br>
                 &emsp;&emsp;被除數當下的位大於除數的位，則直接相減<br>
                 &emsp;&emsp;若不夠減，從前一位開始借，若前一位無法借則向前借位直到得以相減<br>
-                &emsp;&emsp;借的不是前一位時，將借的位後一位到前一位為止補上 '9'<br>
+                &emsp;&emsp;借的不是前一位時，將借的位後一位到當下位的前一位為止存為 '9'<br>
                 &emsp;&emsp;'10' 減除數當下數字後得到差值，再加上被除數當下數字得到相減結果
                   <section data-auto-animate>
                       <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-9|10-29|31-35|"><script type="text/template">   
@@ -592,8 +592,8 @@
                 data-scale="1" 
                 data-motionno="0"
                 style="text-align: left"><br><br>
-                &emsp;&emsp;輸出商數<br>
-                &emsp;&emsp;輸出餘數<br>
+                &emsp;&emsp;輸出商數，從末位開始反向輸出<br>
+                &emsp;&emsp;輸出餘數，從第一位開始輸出<br>
                 &emsp;&emsp;程式結束
                   <section data-auto-animate>
                       <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-15|17-32|"><script type="text/template">   
