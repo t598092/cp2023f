@@ -287,7 +287,7 @@
                     &emsp;&emsp;在執行完全部的操作指令前持續執行迴圈<br>
                     &emsp;&emsp;讓使用者輸入操作指令，並使用 switch 選擇對應的使用函式<br>
                     &emsp;&emsp;case 1~4 使用各自的函式對串列進行加入和刪除的操作<br>
-                    &emsp;&emsp;case 5~7 使用各自的函式對串列執行搜尋後加入節點、反磚和交換節點的操作<br>
+                    &emsp;&emsp;case 5~7 使用各自的函式對串列執行搜尋後加入節點、反轉和交換節點的操作<br>
                     &emsp;&emsp;每執行完一個指令令操作指令的數量減一，執行完全部指令時印出函式<br>
                     &emsp;&emsp;主函式結束
                     <section data-auto-animate>
@@ -590,8 +590,10 @@
                         node_t *Reverse(node_t *first)
                         {
                             node_t *previous = NULL, *current = first, *preceding = first->next; // 指向新串列的下一個節點、當前節點、舊串列的下一個節點的三個指標
-
-                            while (preceding != NULL) { // {1, 2, 3, 4, 5, NULL} -> {1, NULL} -> {2, 1, NULL} -> ... -> {5, 4, 3, 2, 1, NULL}
+                          
+                            // new:{NULL}, old:{1, 2, 3, 4, 5, NULL} -> {1, NULL}, {2, 3, 4, 5, NULL} 
+                            // -> {2, 1, NULL}, {3, 4, 5, NULL} > ... -> {5, 4, 3, 2, 1, NULL}, {NULL}
+                            while (preceding != NULL) {
                                 current->next = previous;      // 把current->next轉向（第一次操作會讓原本的 first -> next 指向 NULL）
                                 previous = current;            // previous指向新串列的第一個節點
                                 current = preceding;           // current指向舊串列剩下的第一個節點（當前要處理的節點）
