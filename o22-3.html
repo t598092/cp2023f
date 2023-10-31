@@ -362,7 +362,7 @@
                         //串列建立函數 
                         node_t *createList(int len){
                             node_t *first, *current, *previous; // 指向第一個節點、當前節點、先前節點的三個指標
-                            for(int i = 0; i<len; i++){
+                            for(int i = 0; i < len; i++){
                                 current = (node_t *) malloc(sizeof(node_t)); // 建立新節點
                                 scanf("%d",&(current->data));  // 設定節點的資料成員
                                 if(i == 0){
