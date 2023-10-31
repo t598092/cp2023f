@@ -204,7 +204,12 @@
             <section>
                 <h3>解答P1</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;首先引用函式庫並使用 struct 定義節點結構<br>
+                    &emsp;&emsp;節點結構由一整數空間與一存放節點型態指標的空間組成<br>
+                    &emsp;&emsp;宣告整數變數 data 用於存放節點資料<br>
+                    &emsp;&emsp;宣告型態為 struct node_s 的指標 next 用於指向下一個節點<br>
+                    &emsp;&emsp;使用 typedef 定義結構 struct node_s 的別名為 node_t，方便撰寫程式
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         #include &lt;stdio.h&gt;
@@ -223,7 +228,14 @@
             <section>
                 <h3>解答P2</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;宣告函式 createList 用來建立串列<br>
+                    &emsp;&emsp;宣告函式 add_Node 用來完成指令1<br>
+                    &emsp;&emsp;宣告函式 delete_the_front, delete_the_back, delete_x_node，<br>
+                    &emsp;&emsp;分別用來完成指令2, 3, 4<br>
+                    &emsp;&emsp;宣告函式 add_y_node 用來完成指令5<br>
+                    &emsp;&emsp;宣告函式 Reverse 用來完成指令6<br>
+                    &emsp;&emsp;宣告函式 Change_position 用來完成指令7
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         node_t *createList(int); // 串列建立函數
@@ -248,7 +260,12 @@
             <section>
                 <h3>解答P3</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;開始寫主函式<br>
+                    &emsp;&emsp;宣告整數 node_num, op_num 分別存放節點數量和操作指令數量<br>
+                    &emsp;&emsp;宣告整數 x, y 存放整數資料 x, y<br>
+                    &emsp;&emsp;讓使用者輸入節點數並使用函式 createList 創建節點<br>
+                    &emsp;&emsp;讓使用者輸入操作指令的數量 
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         int main()
@@ -266,7 +283,13 @@
             <section>
                 <h3>解答P4</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;在執行完全部的操作指令前持續執行迴圈<br>
+                    &emsp;&emsp;讓使用者輸入操作指令，並使用 switch 選擇對應的使用函式<br>
+                    &emsp;&emsp;case 1~4 使用各自的函式對串列進行加入和刪除的操作<br>
+                    &emsp;&emsp;case 5~7 使用各自的函式對串列執行搜尋後加入節點、反磚和交換節點的操作<br>
+                    &emsp;&emsp;每執行完一個指令令操作指令的數量減一，執行完全部指令時印出函式<br>
+                    &emsp;&emsp;主函式結束
                     <section data-auto-animate>
                     <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-5|6-24|26-47|"><script type="text/template"> 
                             while (op_num > 0)
@@ -324,7 +347,16 @@
             <section>
                 <h3>解答P5</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 createList 建立函數<br>
+                    &emsp;&emsp;函式 createList 回傳一節點型態的指標，並需要一個整數變數作為參數<br>
+                    &emsp;&emsp;宣告指標 first, current, previous 分別指向第一個節點、當前節點、先前節點<br>
+                    &emsp;&emsp;使用函式 malloc 動態配置空間給新節點，並令 current 指向新節點<br>
+                    &emsp;&emsp;令使用者輸入當前節點要存放的資料<br>
+                    &emsp;&emsp;當當前節點為第一個成員，令 frist 指向目前的節點<br>
+                    &emsp;&emsp;否則令前一個節點的指標 next 指向目前的節點<br>
+                    &emsp;&emsp;令 previous 指向目前的節點，一開始 previous 會是 first<br>
+                    &emsp;&emsp;串列建立完畢，回傳 first
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         //串列建立函數 
@@ -352,7 +384,13 @@
             <section>
                 <h3>解答P6</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 add_Node 在串列結尾新增節點<br>
+                    &emsp;&emsp;宣告指標 new_node, current 分別指向新節點和當前節點<br>
+                    &emsp;&emsp;使用函式 malloc 動態配置空間給新節點，並令 new_node 指向新節點<br>
+                    &emsp;&emsp;判斷目前是否為最後一個節點，若是最後一個節點則令節點的 next 指向新節點<br>
+                    &emsp;&emsp;若串列不存在，令 first 指向新節點<br>
+                    &emsp;&emsp;設定新節點的 data 和 next，回傳 first
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         //從最後面加入資料 x 
@@ -385,7 +423,11 @@
             <section>
                 <h3>解答P7</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 delete_the_front 刪除串列最前面的節點<br>
+                    &emsp;&emsp;宣告指標 p 用於指向最前面的節點<br>
+                    &emsp;&emsp;當 first 不是 NULL，令 p 指向 first，並令 first 指向下一個節點<br>
+                    &emsp;&emsp;釋放 p 指向節點的空間，回傳 first
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         //刪除最前面節點，若 List 無節點，則不必刪除。
@@ -407,7 +449,14 @@
             <section>
                 <h3>解答P8</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 delete_the_back 用於刪除串列最後面的節點<br>
+                    &emsp;&emsp;宣告指標 current, p 分別指向新節點和最後面的節點<br>
+                    &emsp;&emsp;判斷目前是否為最後一個節點<br>
+                    &emsp;&emsp;若不是則檢查直到下一個節點為串列最後一個節點<br>
+                    &emsp;&emsp;將當前節點設為最後一個節點<br>
+                    &emsp;&emsp;若目前為最後一個節點，設定 first 為 NULL<br>
+                    &emsp;&emsp;釋放 p 指向的空間，回傳 first
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         //刪除最後面節點，若 List 已無節點，則不必刪除。
@@ -442,7 +491,12 @@
             <section>
                 <h3>解答P9</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 delete_x_node 用於刪除串列內資料為 x 的節點<br>
+                    &emsp;&emsp;宣告指標 current, follow, p 分別指向當前節點、先前節點、被刪除節點<br>
+                    &emsp;&emsp;分別判斷第一個節點與其他節點的資料是否為 x<br>
+                    &emsp;&emsp;是則刪除並釋放被刪除節點的空間<br>
+                    &emsp;&emsp;回傳 first
                     <section data-auto-animate>
                     <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-21|22-29|"><script type="text/template"> 
                         //刪除 List 內資料為 x 的節點；若 x 不存在則不刪除任何節點。
@@ -483,7 +537,12 @@
             <section>
                 <h3>解答P10</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 add_y_node 用於完成指令5<br>
+                    &emsp;&emsp;宣告指標 current, previous 分別指向當前節點、新節點<br>
+                    &emsp;&emsp;分別判斷第一個節點與其他節點的資料是否為 x <br>
+                    &emsp;&emsp;是則在其後加入新節點並存入資料 y<br>
+                    &emsp;&emsp;回傳 first
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         //搜尋 List 內資料為 x 的節點，並在其後加入數值 y 的新節點。若 x 不在 List 中，則不必加入 y 。
@@ -517,7 +576,14 @@
             <section>
                 <h3>解答P11</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 Reverse 用於反轉陣列<br>
+                    &emsp;&emsp;宣告指標 previous, current, preceding 分別指向<br>
+                    &emsp;&emsp;新串列的下一個節點、當前節點、舊串列的下一個節點<br>
+                    &emsp;&emsp;當舊串列的下一個節點不為 NULL ，令 current 的 next 指向 previous<br>
+                    &emsp;&emsp;令 current 指向舊串列剩下的第一個節點<br>
+                    &emsp;&emsp;令 preceding 指向舊串列的下一個節點<br>
+                    &emsp;&emsp;反轉結束，令 first 為 current，回傳 first
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         // 反轉 Link List。
@@ -545,9 +611,13 @@
             <section>
                 <h3>解答P12</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 Change_position 用於交換數值為 x 和 y 節點的位置<br>
+                    &emsp;&emsp;宣告一些指標和一些布林值<br>
+                    &emsp;&emsp;判斷 x 節點是否存在，以及 x 節點是否為第一個節點<br>
+                    &emsp;&emsp;判斷 y 節點是否存在，以及判斷 y 節點是否為最後一個節點
                     <section data-auto-animate>
-                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-6|7-26|28-39|"><script type="text/template">      
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-6|7-26|28-43|"><script type="text/template">      
                         // 交換數值為 x 和 y 節點的位置，若 x 或 y 不在 List中，則不必交換。
                         node_t *Change_position(node_t *first, int x, int y)
                         {   
@@ -587,6 +657,10 @@
                                     break;
                                 }
                             }
+                            if(find_y == true && current->next == NULL) // 判斷 y 節點是否為最後一個節點
+                            {
+                                y_back = true;
+                            }
                       </script></code></pre> 
                     </section>
                 </section>
@@ -595,14 +669,11 @@
             <section>
                 <h3>解答P13</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;判斷 x 節點與 y 節點的關係並交換<br>
+                    &emsp;&emsp;回傳 first
                     <section data-auto-animate>
-                      <pre><code data-trim data-noescape>        
-                            if(find_y == true && current->next == NULL) // 判斷 y 節點是否為最後一個節點
-                            {
-                                y_back = true;
-                            }
-
+                      <pre><code data-trim data-noescape>
                             if(find_x == true && find_y == true)
                             {
                                 if(x_front == true && y_back == false) // 當 x 節點為第一個節點且 y 節點不為最後一個節點
@@ -617,21 +688,21 @@
                                     y_current->next = x_current; // 將 y 節點的下一個節點指向原本的 x 節點的下一個節點
                                     x_current->next = NULL; // 將 x 節點指向 NULL
                                 }
-                                else if(x_front == true && y_back == true)
+                                else if(x_front == true && y_back == true) // 當 x 節點為第一個節點且 y 節點為最後一個節點
                                 {
-                                    y_current->next = x_current->next;
-                                    y_previous->next = x_current;
-                                    first = y_current;
-                                    x_current->next = NULL;
+                                    y_current->next = x_current->next;// 將 y 節點的下一個節點指向原本的 x 節點的下一個節點
+                                    y_previous->next = x_current; // 將 y 節點的前一個節點指向 x 節點
+                                    first = y_current; // 將 first 指向 y 節點
+                                    x_current->next = NULL; // 將 x 節點指向 NULL
                                 }
-                                else
+                                else // 當 x 節點不為第一個節點且 y 節點不為最後一個節點
                                 {
-                                temp = x_current->next;
-                                temp1 = y_current->next;
-                                x_previous->next = y_current;
-                                y_previous->next = x_current;
-                                x_current->next = temp1;
-                                y_current->next = temp;
+                                    temp = x_current->next; // 將 temp 指向原本的 x 節點的下一個節點
+                                    temp1 = y_current->next; // 將 temp1 指向原本的 y 節點的下一個節點
+                                    x_previous->next = y_current; // 將原本的 x 節點前面的節點指向 y 節點
+                                    y_previous->next = x_current; // 將原本的 y 節點前面的節點指向 x 節點
+                                    x_current->next = temp1; // 將 x 節點指向原本的 y 節點的下一個節點
+                                    y_current->next = temp; // 將 y 節點指向原本的 x 節點的下一個節點
                                 }
                             }
                             return first;   
@@ -644,7 +715,12 @@
             <section>
                 <h3>解答P14</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;定義函式 printList 用於列印串列<br>
+                    &emsp;&emsp;宣告指標 node 指向當前欲列印節點<br>
+                    &emsp;&emsp;判斷 first 是否為空，若是列印 None<br>
+                    &emsp;&emsp;若不是列印節點直到節點為空<br>
+                    &emsp;&emsp;程式結束
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
                         //串列列印函數
