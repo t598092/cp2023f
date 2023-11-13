@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1900">
+    <title>o22-5</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/reveal/reset.css">
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="vendor/reveal/theme/sky.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="vendor/reveal/plugin/highlight/zenburn.css">
+    <!--edit-->
+    <!-- Pollyfill script -->
+    <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./dist/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./dist/bundle.js"></script>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .reveal {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 26px;
+        }
+
+        #pageIndex {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .controls {
+            bottom: 24px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!--
+            data-no: 老師網頁的cubism人物編號(從0開始，網頁上的編號-1)
+            data-positionx: cubism人物水平位移範圍(建議-1 ~ 0.9)
+            data-positiony: cubism人物垂直位移範圍(建議-0.9~0.4)
+            data-scale: cubism人物縮放(建議1~2之間的小數值，最大極限是3)
+            data-motionno: cubism人物指定動作編號(從0開始，請參閱model3.json檔案的ALL MOTION GROUP)
+            -->
+
+            <section>
+                <h3>Link List 操作(進階題1)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <span style="color:red;">
+                    本題須使用以下 Link List struct 實作才予計分。<br><br>
+                    typedef struct node_s{<br>
+                        &emsp;&emsp;int data;<br>
+                        &emsp;&emsp;struct node_s *next;<br>
+                    } node_t;</span><br><br>
+
+                    針對空的 List,先進行 N 個資料節點加入,再進行加入、刪除、交換、反轉等操作。
+                    輸出操作後 Link List 資料。測試資料不會出現相同整數資料。
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <span style="color:red;">(使用以下 struct 與 Link List 實作才計分)</span><br>
+                    (1) void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果<br><br>
+                    (2) void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果<br><br>
+                    (3) void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果<br><br>
+                    <span style="color:red;">
+                    typedef struct node_s {<br>
+                        &emsp;&emsp;int coef;<br>
+                        &emsp;&emsp;int exp;<br>
+                        &emsp;&emsp;struct node_s * next;<br>
+                    } node_t;<br><br>
+
+                    typedef node_t * nodep_t; //此行重新命名node_t*，之後nodep_t 都代表node_t*<br><br> 
+
+                    typedef struct pol_s {<br>
+                        &emsp;&emsp;nodep_t root;<br>
+                    } pol_t;
+                    </span>
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_i.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_in_out1.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_in_out2.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>多項式相加、相減、相乘(進階題2)</h3>
+                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    <img src="img/ch17-2/06_in_out3.png" style="display:block; margin:auto;">
+                </section>
+            </section>
+
+            <section>
+                <h3>Tips</h3>
+                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    <pre><code data-trim data-noescape>
+                        #include &lt;stdio.h&gt;
+                        #include &lt;stdlib.h&gt;
+                        #include &lt;stdbool.h&gt;
+
+                        typedef struct node_s {
+                            int coef;
+                            int exp;
+                            struct node_s * next;
+                        } node_t; 
+                        
+                        typedef node_t * nodep_t; // 此行重新命名node_t*，之後nodep_t 都代表node_t*
+                        
+                        typedef struct pol_s {
+                            nodep_t root;
+                        } pol_t; // pol_t是指Linked list的第一個node。
+                        
+                        void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果
+                        void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果
+                        void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果
+                        
+                        nodep_t createList(int); // 串列建立函數
+                        void printList(nodep_t);  // 串列列印函數 
+                        
+                        int main()
+                        {
+                            nodep_t x_first;
+
+                            pol_t *x;
+
+                            x = (pol_t *) malloc(sizeof(pol_t));
+                            
+                            x->root = x_first;
+                        }
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P1</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    #include <stdio.h>
+                    #include <stdlib.h>
+                    #include <stdbool.h>
+                    
+                    typedef struct node_s {
+                        int coef;
+                        int exp;
+                        struct node_s * next;
+                    } node_t; 
+                    
+                    typedef node_t * nodep_t; // 此行重新命名node_t*，之後nodep_t 都代表node_t*
+                    
+                    typedef struct pol_s {
+                        nodep_t root;
+                    } pol_t; // pol_t是指Linked list的第一個node。
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P2</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果
+                    void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果
+                    void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果
+                    
+                    nodep_t createList(int); // 串列建立函數
+                    void printList(nodep_t);  // 串列列印函數
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P3</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                      int main()
+                      {
+                          int x_node_num, y_node_num;
+                          nodep_t x_first, y_first, z_first, new_node;
+                          pol_t *x, *y ,*z;
+                          x = (pol_t *) malloc(sizeof(pol_t));
+                          y = (pol_t *) malloc(sizeof(pol_t));
+                          z = (pol_t *) malloc(sizeof(pol_t));
+                      
+                          scanf("%d",&x_node_num);
+                          x_first = createList(x_node_num);
+                          x->root = x_first;
+                      
+                          scanf("%d",&y_node_num);
+                          y_first = createList(y_node_num);
+                          y->root = y_first;
+                      
+                          new_node=(nodep_t) malloc(sizeof(node_t));
+                          new_node->exp = 100;
+                          z_first = new_node;
+                          z->root = z_first;
+                      
+                          add(x, y, z);
+                          z_first->next = NULL;
+                          sub(x, y, z);
+                          z_first->next = NULL;
+                          mul(x, y, z);
+                          return 0;
+                      }
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P5</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>
+                    // 串列建立函數
+                    nodep_t createList(int len){
+                    	nodep_t first, current, previous;
+                    	for(int i=0;i<len;i++){
+                    		current=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                    		scanf("%d",&(current->coef));  //設定節點的資料成員
+                            current->exp = len - i -1;
+                    		if(i==0){
+                    		    first=current;  //如果是第一個成員把指標frist指向目前的節點 
+                    	    }
+                            else{
+                    			previous->next=current; //把前一個的next指向目前的節點 
+                    		}
+                    		current->next=NULL; //把目前的節點的next指向NULL
+                    		previous=current; //把前一個節點設成目前的節點 
+                    	}
+                    	return first;
+                    }
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P6</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>                  
+                    //串列列印函數
+                    void printList(nodep_t first){
+                    	nodep_t node = first -> next; //將node指向第一個節點(跳過z最前面的節點)
+                    	if(first == NULL){
+                    		printf("None\n");
+                    	}else{
+                    		while(node != NULL){
+                    			printf("%d %d ", node->coef, node->exp);
+                    			node = node->next;
+                    		}
+                    		printf("\n");
+                    	}
+                    } 
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P7</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>                  
+                      void sub(pol_t* X, pol_t* Y, pol_t* Z)
+                      {
+                          nodep_t x_current, y_current, z_current, z_root, new_node;
+                      
+                          x_current = X->root;
+                          y_current = Y->root;
+                          z_current = Z->root;
+                          z_root = Z->root;
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P8</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>  
+                      while (1)
+                      {
+                          if(x_current == NULL || y_current == NULL)
+                              break;
+                          if( x_current->exp > y_current->exp )
+                          {
+                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node->coef = x_current->coef;
+                              new_node->exp = x_current->exp;
+                              x_current = x_current->next;
+                          }
+                          else if( x_current->exp < y_current->exp )
+                          {
+                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node->coef = -y_current->coef;
+                              new_node->exp = y_current->exp;
+                              y_current = y_current->next;
+                          }
+                          else
+                          {
+                              new_node=(nodep_t) malloc(sizeof(node_t));
+                              new_node->coef = x_current->coef - y_current->coef;
+                              new_node->exp = x_current->exp;
+                              x_current = x_current->next;
+                              y_current = y_current->next;
+                          }
+                          z_current->next = new_node;
+                          z_current = z_current->next;
+                          z_current->next = NULL;
+                      }
+                      printList(z_root);
+                  }
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P9</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>                  
+                      void add(pol_t* X, pol_t* Y, pol_t* Z)
+                      {
+                          nodep_t x_current, y_current, z_current, z_root, new_node;
+                      
+                          x_current = X->root;
+                          y_current = Y->root;
+                          z_current = Z->root;
+                          z_root = Z->root;
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P10</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>                  
+                      while (1)
+                      {
+                          if(x_current == NULL || y_current == NULL)
+                              break;
+                          if( x_current->exp > y_current->exp )
+                          {
+                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node->coef = x_current->coef;
+                              new_node->exp = x_current->exp;
+                              x_current = x_current->next;
+                          }
+                          else if( x_current->exp < y_current->exp )
+                          {
+                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node->coef = y_current->coef;
+                              new_node->exp = y_current->exp;
+                              y_current = y_current->next;
+                          }
+                          else
+                          {
+                              new_node=(nodep_t) malloc(sizeof(node_t));
+                              new_node->coef = x_current->coef + y_current->coef;
+                              new_node->exp = x_current->exp;
+                              x_current = x_current->next;
+                              y_current = y_current->next;
+                          }
+                          z_current->next = new_node;
+                          z_current = z_current->next;
+                          z_current->next = NULL;
+                      }
+                      
+                      printList(z_root);
+                  }
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P11</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>                  
+                      void mul(pol_t* X, pol_t* Y, pol_t* Z)
+                      {
+                          int product_exp; // x * y的次方項
+                          bool exp_exist = false; // 看 z 的 linked list 中是否已經出現過 x * y 的次方 , false 表示未出現
+                          nodep_t x_current, y_current, z_current, z_root, new_node;
+                      
+                          x_current = X->root;
+                          y_current = Y->root;
+                          z_current = Z->root;
+                          z_root = Z->root;
+                </section>
+            </section>
+
+            <section>
+                <h3>解答P12</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br>                  
+                      while (1)   // 讓 y 的每一項去 * x 每一項
+                      {
+                          exp_exist = false;
+                          z_current = Z->root;
+                  
+                          if(x_current == NULL)
+                          {
+                              y_current = y_current->next;
+                              x_current = X->root;
+                          }
+                          if(y_current == NULL)
+                              break;
+                          
+                          product_exp = x_current->exp + y_current->exp;
+                          while (z_current != NULL)
+                          {
+                              if(z_current->exp == product_exp)    //看 z 的 linked list 中是否已經出現過 x * y 的次方
+                              {
+                                  exp_exist = true;
+                                  break;
+                              }
+                              if(z_current->next != NULL)
+                                  z_current = z_current->next;
+                              else
+                                  break;
+                          }
+                          
+                          if(exp_exist == false) // x * y 的次方項不在z中，則建立新節點
+                          {
+                              new_node=(nodep_t) malloc(sizeof(node_t)); // 建立新節點
+                              new_node->coef = x_current->coef * y_current->coef;
+                              new_node->exp = product_exp;
+                              z_current->next = new_node;
+                              z_current = z_current->next;
+                              z_current->next = NULL;
+                          }
+                          else // x * y 的次方項在z中，則直接更新該系數
+                          {
+                              z_current->coef += x_current->coef * y_current->coef;
+                          }
+                          x_current = x_current->next;
+                      }
+                      printList(z_root);
+                  }
+                </section>
+            </section>
+          
+        </div>
+    </div>
+    <div id="pageIndex"></div>
+    <!-- reveal.js-->
+    <script src="vendor/reveal/reveal.js"></script>
+    <!--plugin-->
+    <script src="vendor/reveal/plugin/math/math.js"></script>
+    <script src="vendor/reveal/plugin/search/search.js"></script>
+    <script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+    <script src="vendor/reveal/plugin/highlight/highlight.js"></script>
+    <script src="main-ppt.js"></script>
+</body>
+
+</html>
