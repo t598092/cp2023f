@@ -183,6 +183,7 @@
                 <h3>解答P1</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
+                    <pre><code data-trim data-noescape>
                     #include <stdio.h>
                     #include <stdlib.h>
                     #include <stdbool.h>
@@ -198,26 +199,28 @@
                     typedef struct pol_s {
                         nodep_t root;
                     } pol_t; // pol_t是指Linked list的第一個node。
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P2</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
+                    <pre><code data-trim data-noescape>
                     void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果
                     void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果
                     void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果
                     
                     nodep_t createList(int); // 串列建立函數
                     void printList(nodep_t);  // 串列列印函數
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P3</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
+                    <pre><code data-trim data-noescape>
                       int main()
                       {
                           int x_node_num, y_node_num;
@@ -247,13 +250,14 @@
                           mul(x, y, z);
                           return 0;
                       }
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P5</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
+                    <pre><code data-trim data-noescape>
                     // 串列建立函數
                     nodep_t createList(int len){
                     	nodep_t first, current, previous;
@@ -272,13 +276,14 @@
                     	}
                     	return first;
                     }
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P6</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>                  
+                    style="text-align: left"><br>  
+                    <pre><code data-trim data-noescape>                
                     //串列列印函數
                     void printList(nodep_t first){
                     	nodep_t node = first -> next; //將node指向第一個節點(跳過z最前面的節點)
@@ -292,13 +297,14 @@
                     		printf("\n");
                     	}
                     } 
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P7</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>                  
+                    style="text-align: left"><br>  
+                    <pre><code data-trim data-noescape>                    
                       void sub(pol_t* X, pol_t* Y, pol_t* Z)
                       {
                           nodep_t x_current, y_current, z_current, z_root, new_node;
@@ -307,13 +313,14 @@
                           y_current = Y->root;
                           z_current = Z->root;
                           z_root = Z->root;
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P8</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>  
+                    <pre><code data-trim data-noescape>
                       while (1)
                       {
                           if(x_current == NULL || y_current == NULL)
@@ -346,13 +353,14 @@
                       }
                       printList(z_root);
                   }
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P9</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>                  
+                    <pre><code data-trim data-noescape>
                       void add(pol_t* X, pol_t* Y, pol_t* Z)
                       {
                           nodep_t x_current, y_current, z_current, z_root, new_node;
@@ -361,13 +369,14 @@
                           y_current = Y->root;
                           z_current = Z->root;
                           z_root = Z->root;
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P10</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>                  
+                    style="text-align: left"><br>          
+                    <pre><code data-trim data-noescape>             
                       while (1)
                       {
                           if(x_current == NULL || y_current == NULL)
@@ -401,13 +410,14 @@
                       
                       printList(z_root);
                   }
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P11</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>                  
+                    style="text-align: left"><br>         
+                    <pre><code data-trim data-noescape>              
                       void mul(pol_t* X, pol_t* Y, pol_t* Z)
                       {
                           int product_exp; // x * y的次方項
@@ -418,13 +428,14 @@
                           y_current = Y->root;
                           z_current = Z->root;
                           z_root = Z->root;
-                </section>
+                    </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P12</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>                  
+                    style="text-align: left"><br>       
+                    <pre><code data-trim data-noescape>                
                       while (1)   // 讓 y 的每一項去 * x 每一項
                       {
                           exp_exist = false;
@@ -469,7 +480,7 @@
                       }
                       printList(z_root);
                   }
-                </section>
+                    </code></pre></section>
             </section>
           
         </div>
