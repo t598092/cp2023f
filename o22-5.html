@@ -123,7 +123,7 @@
 
             <section>
                 <h3>多項式相加、相減、相乘(進階題2)</h3>
-                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                <section  data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
                     <img src="img/ch17-2/06_in_out2.png" style="display:block; margin:auto;">
                 </section>
@@ -139,12 +139,12 @@
 
             <section>
                 <h3>Tips</h3>
-                <section data-auto-animate data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
+                <section data-no="17" data-positionx="0.75" data-positiony="0.05" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>
-                    <pre><code data-trim data-noescape>
-                        #include &lt;stdio.h&gt;
-                        #include &lt;stdlib.h&gt;
-                        #include &lt;stdbool.h&gt;
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-15|17-33|"><script type="text/template">
+                        #include <stdio.h>
+                        #include <stdlib.h>
+                        #include <stdbool.h>
 
                         typedef struct node_s {
                             int coef;
@@ -175,18 +175,22 @@
                             
                             x->root = x_first;
                         }
-                    </code></pre>
+                    </script></code></pre>
                 </section>
             </section>
 
             <section>
                 <h3>解答P1</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;首先引用函式庫並依照題目使用 struct 定義節點結構<br>
+                    &emsp;&emsp;重新命名node_t*，令之後nodep_t 都代表node_t*<br>
+                    &emsp;&emsp;使用 struct 定義存放根結點的結構<br>
+                    <section data-auto-animate>
                     <pre><code data-trim data-noescape>
-                    #include <stdio.h>
-                    #include <stdlib.h>
-                    #include <stdbool.h>
+                    #include &lt;stdio.h&gt;
+                    #include &lt;stdlib.h&gt;
+                    #include &lt;stdbool.h&gt;
                     
                     typedef struct node_s {
                         int coef;
@@ -199,37 +203,66 @@
                     typedef struct pol_s {
                         nodep_t root;
                     } pol_t; // pol_t是指Linked list的第一個node。
-                    </code></pre></section>
+                    </code></pre>
+                    </section>
+                </section>
             </section>
 
             <section>
                 <h3>解答P2</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;宣告函式 add 用來進行多項式相加<br>
+                    &emsp;&emsp;宣告函式 sub 用來進行多項式相減<br>
+                    &emsp;&emsp;宣告函式 mul 用來進行多項式相減<br>
+                    &emsp;&emsp;宣告函式 createList 用來建立串列<br>
+                    &emsp;&emsp;宣告函式 printList 用來列印串列<br>
+                    <section data-auto-animate>
                     <pre><code data-trim data-noescape>
                     void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果
                     void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果
-                    void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果
+                    void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果
                     
                     nodep_t createList(int); // 串列建立函數
                     void printList(nodep_t);  // 串列列印函數
-                    </code></pre></section>
+                    </code></pre></section></section>
             </section>
 
             <section>
                 <h3>解答P3</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;開始寫主函式<br>
+                    &emsp;&emsp;宣告整數 x_node_num, y_node_num 用來存放使用者輸入的節點數目<br>
+                    &emsp;&emsp;宣告指標 x_first, y_first, z_first, new_node，<br>
+                    &emsp;&emsp;分別指向第一、第二個多項式，結果多項式，以及新的節點<br>
+                    &emsp;&emsp;宣告指標 x, y, z 分別指向多項式 x, 多項式 y, 多項式 z 的根節點
+                    <section data-auto-animate>
                     <pre><code data-trim data-noescape>
                       int main()
                       {
                           int x_node_num, y_node_num;
-                          nodep_t x_first, y_first, z_first, new_node;
+                          nodep_t x_first, y_first, z_first, new_node; // 4個指標，分別指向第一、第二個多項式，結果多項式，以及新的節點
                           pol_t *x, *y ,*z;
                           x = (pol_t *) malloc(sizeof(pol_t));
                           y = (pol_t *) malloc(sizeof(pol_t));
                           z = (pol_t *) malloc(sizeof(pol_t));
-                      
+                    </code></pre></section></section>
+            </section>
+
+            <section>
+                <h3>解答P4</h3>
+                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                    style="text-align: left"><br><br>
+                    &emsp;&emsp;讓使用者輸入多項式 x 的節點數目<br>
+                    &emsp;&emsp;創建多項式 x 的串列，並將 x->root 指向第一個節點<br>
+                    &emsp;&emsp;讓使用者輸入多項式 y 的節點數目<br>
+                    &emsp;&emsp;創建多項式 y 的串列，並將 y->root 指向第一個節點<br>
+                    &emsp;&emsp;創建一個節點，並將 z_first, z->root 指向這個節點<br>
+                    &emsp;&emsp;使用函式 add, sub, mul 進行多項式相加、相減、相乘<br>
+                    &emsp;&emsp;主函式結束
+                    <section data-auto-animate>
+                    <pre><code data-trim data-noescape>
                           scanf("%d",&x_node_num);
                           x_first = createList(x_node_num);
                           x->root = x_first;
@@ -239,7 +272,6 @@
                           y->root = y_first;
                       
                           new_node=(nodep_t) malloc(sizeof(node_t));
-                          new_node->exp = 100;
                           z_first = new_node;
                           z->root = z_first;
                       
@@ -250,7 +282,7 @@
                           mul(x, y, z);
                           return 0;
                       }
-                    </code></pre></section>
+                    </code></pre></section></section>
             </section>
 
             <section>
@@ -260,28 +292,28 @@
                     <pre><code data-trim data-noescape>
                     // 串列建立函數
                     nodep_t createList(int len){
-                    	nodep_t first, current, previous;
-                    	for(int i=0;i<len;i++){
-                    		current=(nodep_t) malloc(sizeof(node_t)); //建立新節點
-                    		scanf("%d",&(current->coef));  //設定節點的資料成員
-                            current->exp = len - i -1;
-                    		if(i==0){
-                    		    first=current;  //如果是第一個成員把指標frist指向目前的節點 
-                    	    }
+                        nodep_t first, current, previous; // 3個指標，分別指向第一、第二個多項式，結果多項式，以及新的節點
+                        for(int i=0;i < len;i++){
+                            current=(nodep_t) malloc(sizeof(node_t)); // 建立新節點並令 current 指向它
+                            scanf("%d",&(current->coef));  // 設定節點的資料成員(係數)
+                            current->exp = len -1 - i; // 設定節點的資料成員(次方)，次方 = 項數個數 - 1 - 已跑迴圈數
+                            if(i==0){
+                                first=current;  // 如果是第一個成員把指標frist指向目前的節點 
+                            }
                             else{
-                    			previous->next=current; //把前一個的next指向目前的節點 
-                    		}
-                    		current->next=NULL; //把目前的節點的next指向NULL
-                    		previous=current; //把前一個節點設成目前的節點 
-                    	}
-                    	return first;
+                                previous->next=current; // 把前一個的next指向目前的節點 
+                            }
+                            current->next=NULL; // 把目前的節點的next指向NULL
+                            previous=current; // 把前一個節點設成目前的節點 
+                        }
+                        return first;
                     }
                     </code></pre></section>
             </section>
 
             <section>
                 <h3>解答P6</h3>
-                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                <section data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>  
                     <pre><code data-trim data-noescape>                
                     //串列列印函數
@@ -291,7 +323,7 @@
                     		printf("None\n");
                     	}else{
                     		while(node != NULL){
-                    			printf("%d %d ", node->coef, node->exp);
+                    			printf("%d %d ", node->coef, node->exp); // 輸出係數和次方
                     			node = node->next;
                     		}
                     		printf("\n");
@@ -308,6 +340,7 @@
                       void sub(pol_t* X, pol_t* Y, pol_t* Z)
                       {
                           nodep_t x_current, y_current, z_current, z_root, new_node;
+                          // 5個指標，分別指向 x, y, z 的當前節點， z 的第一個節點， 以及新的節點
                       
                           x_current = X->root;
                           y_current = Y->root;
@@ -319,41 +352,41 @@
             <section>
                 <h3>解答P8</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>  
-                    <pre><code data-trim data-noescape>
+                    style="text-align: left">
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-18|19-32|"><script type="text/template">
                       while (1)
                       {
                           if(x_current == NULL || y_current == NULL)
                               break;
-                          if( x_current->exp > y_current->exp )
+                          if( x_current->exp > y_current->exp ) // 若當前多項式 x 的項次方大於多項式 y 的項次方
                           {
-                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node=(nodep_t) malloc(sizeof(node_t)); // 建立新節點，存進當前多項式 x 的項
                               new_node->coef = x_current->coef;
                               new_node->exp = x_current->exp;
                               x_current = x_current->next;
                           }
-                          else if( x_current->exp < y_current->exp )
+                          else if( x_current->exp < y_current->exp ) // 若當前多項式 x 的項次方小於多項式 y 的項次方
                           {
-                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node=(nodep_t) malloc(sizeof(node_t)); // 建立新節點，存進加上負號的當前多項式 y 的項
                               new_node->coef = -y_current->coef;
                               new_node->exp = y_current->exp;
                               y_current = y_current->next;
                           }
-                          else
+                          else // 若兩者的項次方相等
                           {
-                              new_node=(nodep_t) malloc(sizeof(node_t));
-                              new_node->coef = x_current->coef - y_current->coef;
-                              new_node->exp = x_current->exp;
+                              new_node=(nodep_t) malloc(sizeof(node_t)); // 建立新節點
+                              new_node->coef = x_current->coef - y_current->coef; // 存進當前多項式 x 的項係數減當前多項式 y 的項係數
+                              new_node->exp = x_current->exp; // 存進當前多項式 x 的項次方
                               x_current = x_current->next;
                               y_current = y_current->next;
                           }
-                          z_current->next = new_node;
-                          z_current = z_current->next;
-                          z_current->next = NULL;
-                      }
-                      printList(z_root);
+                              z_current->next = new_node; // 將當前 z 的指標 next 指向新的節點
+                              z_current = z_current->next; // 把後一個節點設成當前節點 
+                              z_current->next = NULL; // 把當前節點(本輪的新節點)的指標 next 設為 NULL
+                          }
+                          printList(z_root); // 做完減法即列印多項式 z
                   }
-                    </code></pre></section>
+                    </script></code></pre></section>
             </section>
 
             <section>
@@ -364,6 +397,7 @@
                       void add(pol_t* X, pol_t* Y, pol_t* Z)
                       {
                           nodep_t x_current, y_current, z_current, z_root, new_node;
+                          // 5個指標，分別指向 x, y, z 的當前節點， z 的第一個節點， 以及新的節點
                       
                           x_current = X->root;
                           y_current = Y->root;
@@ -375,30 +409,31 @@
             <section>
                 <h3>解答P10</h3>
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>          
-                    <pre><code data-trim data-noescape>             
+                    style="text-align: left">
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-18|19-32|"><script type="text/template">     
                       while (1)
                       {
                           if(x_current == NULL || y_current == NULL)
                               break;
-                          if( x_current->exp > y_current->exp )
+                          if( x_current->exp > y_current->exp ) // 若當前多項式 x 的項次方大於多項式 y 的項次方
                           {
-                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node=(nodep_t) malloc(sizeof(node_t)); // 建立新節點，存進當前多項式 x 的項
                               new_node->coef = x_current->coef;
                               new_node->exp = x_current->exp;
                               x_current = x_current->next;
                           }
-                          else if( x_current->exp < y_current->exp )
+                          else if( x_current->exp < y_current->exp ) // 若當前多項式 x 的項次方小於多項式 y 的項次方
                           {
-                              new_node=(nodep_t) malloc(sizeof(node_t)); //建立新節點
+                              new_node=(nodep_t) malloc(sizeof(node_t)); // 建立新節點，存進當前多項式 y 的項
                               new_node->coef = y_current->coef;
                               new_node->exp = y_current->exp;
                               y_current = y_current->next;
                           }
-                          else
+                          else // 若兩者的項次方相等
                           {
                               new_node=(nodep_t) malloc(sizeof(node_t));
-                              new_node->coef = x_current->coef + y_current->coef;
+                              new_node->coef = x_current->coef + y_current->coef; // 存進當前多項式 x 的項係數加當前多項式 y 的項係數
+                              new_node->exp = x_current->exp; // 存進當前多項式 x 的項次方
                               new_node->exp = x_current->exp;
                               x_current = x_current->next;
                               y_current = y_current->next;
@@ -407,10 +442,9 @@
                           z_current = z_current->next;
                           z_current->next = NULL;
                       }
-                      
-                      printList(z_root);
+                      printList(z_root); // 做完加法即列印多項式 z
                   }
-                    </code></pre></section>
+                    </script></code></pre></section>
             </section>
 
             <section>
@@ -433,23 +467,24 @@
 
             <section>
                 <h3>解答P12</h3>
-                <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
+                <section data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>       
-                    <pre><code data-trim data-noescape>                
+                    <pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|1-14|16-27|29-45|"><script type="text/template">              
                       while (1)   // 讓 y 的每一項去 * x 每一項
                       {
                           exp_exist = false;
                           z_current = Z->root;
                   
-                          if(x_current == NULL)
+                          if(x_current == NULL) // y 的當前項已經乘上 x 的每一項
                           {
-                              y_current = y_current->next;
-                              x_current = X->root;
+                              y_current = y_current->next; // 到 y 的下一項
+                              x_current = X->root; // 從頭開始乘上 x 的每一項
                           }
                           if(y_current == NULL)
                               break;
                           
-                          product_exp = x_current->exp + y_current->exp;
+                          product_exp = x_current->exp + y_current->exp; // 次方項相乘結果為相加
+
                           while (z_current != NULL)
                           {
                               if(z_current->exp == product_exp)    //看 z 的 linked list 中是否已經出現過 x * y 的次方
@@ -463,24 +498,24 @@
                                   break;
                           }
                           
-                          if(exp_exist == false) // x * y 的次方項不在z中，則建立新節點
+                          if(exp_exist == false) // x * y 的次方項不在 z 中，則建立新節點
                           {
                               new_node=(nodep_t) malloc(sizeof(node_t)); // 建立新節點
-                              new_node->coef = x_current->coef * y_current->coef;
-                              new_node->exp = product_exp;
+                              new_node->coef = x_current->coef * y_current->coef; // 存進係數相乘結果
+                              new_node->exp = product_exp; // 存進次方項相乘結果
                               z_current->next = new_node;
                               z_current = z_current->next;
                               z_current->next = NULL;
                           }
-                          else // x * y 的次方項在z中，則直接更新該系數
+                          else // x * y 的次方項在 z 中，則直接更新該系數
                           {
-                              z_current->coef += x_current->coef * y_current->coef;
+                              z_current->coef += x_current->coef * y_current->coef; // 加進係數相乘結果
                           }
                           x_current = x_current->next;
                       }
-                      printList(z_root);
+                      printList(z_root); // 做完乘法即列印多項式 z
                   }
-                    </code></pre></section>
+                    </script></code></pre></section>
             </section>
           
         </div>
