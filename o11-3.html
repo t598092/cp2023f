@@ -441,18 +441,18 @@
                   <pre><code data-trim data-noescape>
                     int main()
                     {
-                        float points[4] = {0}; // Computer、Players1~3的點數
-                        int output[4] = {0}; // Players1~3、Computer的得分
-                        int bets[3] = {0}; // Players下注數
-                        bool burst[3] = {false}; // Players是否已爆
-                        bool stop[3] = {false}; // 所有 Players 是否都已經與 Computer 分出勝負
-                        bool is_stop = false; // 判斷是否players全部結束
-                        int players, count = 1, hand_cards = 0; // players人數(不包含電腦), players下注數, 記錄當下是第幾個player, 發牌數
-                        float min_point; // players中點數最小的值
-                        char in_str[15] = {'\0'}; // 存輸入字串
-                      
-                        char ch; // 跟函式 getchar 搭配使用
-                        int i = 0; // 跟迴圈搭配使用、作為陣列索引值
+                            float points[4] = {0}; // Computer、Players1~3的點數
+                            int output[4] = {0}; // Players1~3、Computer的得分
+                            int bets[3] = {0}; // Players下注數
+                            bool burst[3] = {false}; // Players是否已爆
+                            bool stop[3] = {false}; // 所有 Players 是否都已經與 Computer 分出勝負
+                            bool is_stop = false; // 判斷是否players全部結束
+                        
+                            int players, count = 1, hand_cards = 0; // players人數(不包含電腦), 記錄當下是第幾個player, 發牌數
+                            float min_point; // players中點數最小的值
+                            char in_str[15] = {'\0'}; // 存輸入字串
+                            char ch; // 跟函式 getchar 搭配使用
+                            int i = 0; // 跟迴圈搭配使用、作為陣列索引值
                   </code></pre> 
               </section>
             </section>
@@ -522,17 +522,15 @@
             &emsp;&emsp;再將得到的點數存進浮點數陣列 points[4]，表示目前電腦或玩家的點數
               <section data-auto-animate>
                   <pre><code data-trim data-noescape>
-                    // 丟到deal()換成對應點數，存至points[]
-                    do{
-                    
+                    // 丟到deal()換成對應點數，存至points[] <-原本使用 do-while 迴圈
+                    for(int p = 0; p < players + 1;p++)
+                    {
                         points[p] = deal(in_str[i], in_str[i+1]); // 用函式 deal 得到初始點數並存為目前 Computer 或 Player 的點數
                         if(points[p] == 10)
                             i++; // 若目前 Player 的點數為 10 則需要讓 i 多加 1 才可得到正確的下一個點數位置
-
+                
                         i += 2; // 得到下一個點數位置
-                        p++; // 得到代表下一個 Player 的索引值
-
-                    }while(p != players + 1);
+                    }
                     i = 0;
                   </code></pre> 
               </section><br>
@@ -557,16 +555,16 @@
                     // 給players發牌
                     while (count <= players) // 當 count 小於等於玩家數繼續執行 while 迴圈
                     {
-                        hand_cards = 1; // 當前玩家發牌數為 1 (初始牌面)
-
-                        // 初始化用於存放輸入字串的字元陣列 in_str
+                        hand_cards = 1; // 發牌數為 1 (初始牌面)
+                
+                        // 初始化輸入字串
                         for (int j = 0; j < 15; j++)
                         {
                             in_str[j] = '\0';
                         }
                         
-                        // 用 getchar() 讀取使用者輸入的字串並分別存入字元陣列 in_str
-                        while((ch = getchar()) != '\n') 
+                        // 用 getchar() 分別讀取使用者輸入的字串並存入字元陣列 in_str
+                        while((ch = getchar()) != '\n') // 最後才不會把換行符號存進 in_str
                         {
                             in_str[i]= ch;
                             i++;
@@ -615,7 +613,7 @@
                                 output[players] -= bets[count-1]; // 設定 Computer 賠當前 Player 的下注數
                                 break;
                             }
-
+                
                             // Player got 5 cards and not burst,Computer 立賠
                             if(hand_cards == 5)
                             {
@@ -624,7 +622,7 @@
                                 output[players] -= bets[count-1];
                                 break;
                             }
-
+                
                             while((ch = getchar()) != '\n') // 沒有立賠的情況時, 輸入下一行決定是否繼續發牌給當前 Player
                             {
                                 in_str[i]= ch;
@@ -653,7 +651,7 @@
                   <pre><code data-trim data-noescape>
                     // 找出players中點數最小的值
                     min_point= points[1]; // 先假設 Player1 的點數最小
-
+                
                     for(int k = 1; k < players + 1; k++)
                     {
                         if(min_point > points[k]) // 當最小值大於當前 Player 的點數時, 設定當前 Player 的點數為最小值
@@ -679,7 +677,7 @@
             &emsp;&emsp;若有任一玩家未結束，則定義遊戲未結束
               <section data-auto-animate>
                   <pre><code data-trim data-noescape>
-                    // 判斷players是否都已經結束
+                    // 判斷players是否都結束
                     for(int k = 0; k < players; k++)
                     {
                         if(stop[k] == false) // 當有 Player 未結束, 則遊戲未結束
@@ -721,10 +719,10 @@
                                 i++;
                             }
                             i = 0;
-
+                
                             float r = deal(in_str[0],in_str[1]); // 用函式 deal 得到當前點數並存進 r
                             points[0] += r; // 將當前點數 r 加進 Computer 的點數
-
+                
                             // Computer 爆, 賠給未結束 Players
                             if(points[0] > 10.5)
                             {
@@ -804,7 +802,7 @@
                                 {
                                     printf("Player%d +%d\n", k+1,output[k]);
                                 }
-                                else // 若沒賺, 則直接輸出
+                                else // 若賠, 則直接輸出
                                 {
                                     printf("Player%d %d\n", k+1,output[k]);
                                 }
