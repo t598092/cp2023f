@@ -453,7 +453,6 @@
                     &emsp;&emsp;宣告指標 current, p 分別指向新節點和最後面的節點<br>
                     &emsp;&emsp;判斷目前是否為最後一個節點<br>
                     &emsp;&emsp;若不是則檢查直到下一個節點為串列最後一個節點<br>
-                    &emsp;&emsp;將當前節點設為最後一個節點<br>
                     &emsp;&emsp;若目前為最後一個節點，設定 first 為 NULL<br>
                     &emsp;&emsp;釋放 p 指向的空間，回傳 first
                     <section data-auto-animate>
@@ -466,7 +465,7 @@
                             if(first!=NULL){ // 判斷串列是否存在
                                 if(current->next!=NULL) // 判斷目前是否為最後一個節點
                                 {
-                                    while (current->next->next != NULL)
+                                    while (current->next->next != NULL) // 判斷下一個節點是否為最後一個節點
                                     {
                                         current = current->next;
                                     }
