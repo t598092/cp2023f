@@ -314,7 +314,7 @@
                         node_t *delete_the_back(node_t *); // 3.刪除最後面節點，若 List 已無節點，則不必刪除。
                         node_t *delete_x_node(node_t *, int); // 4.刪除 List 內資料為 x 的節點；若 x 不存在則不刪除任何節點。
                         node_t *add_y_node(node_t *, int, int); // 5.搜尋 List 內資料為 x 的節點，並在其後加入數值 y 的新節點。若 x 不在 List 中，則不必加入 y 。
-                        node_t *Reverse(node_t *);// 6. 反轉 Link List。
+                        node_t *Reverse(node_t *);// 6. 反轉 Linked List。
                         node_t *Change_position(node_t *, int, int);// 7. 交換數值為 x 和 y 節點的位置，若 x 或 y 不在 List中，則不必交換。
                         void printList(node_t *);  // 串列列印函數
 
@@ -390,7 +390,7 @@
 
                         node_t *add_y_node(node_t *, int, int); // 5.搜尋 List 內資料為 x 的節點，並在其後加入數值 y 的新節點。若 x 不在 List 中，則不必加入 y 。
 
-                        node_t *Reverse(node_t *); // 6. 反轉 Link List。
+                        node_t *Reverse(node_t *); // 6. 反轉 Linked List。
                         node_t *Change_position(node_t *, int, int); // 7. 交換數值為 x 和 y 節點的位置，若 x 或 y 不在 List中，則不必交換。
 
                         void printList(node_t *);  // 串列列印函數 
@@ -464,7 +464,7 @@
                                     first = add_y_node(first, x, y);
                                     break;
 
-                                case 6: // 6. 反轉 Link List。
+                                case 6: // 6. 反轉 Linked List。
                                     first = Reverse(first);
                                     break;
 
@@ -726,7 +726,7 @@
                     &emsp;&emsp;反轉結束，令 first 為 current，回傳 first
                     <section data-auto-animate>
                       <pre><code data-trim data-noescape>        
-                        // 反轉 Link List。
+                        // 反轉 Linked List。
                         node_t *Reverse(node_t *first)
                         {
                             node_t *previous = NULL, *current = first, *preceding = first->next; // 指向新串列的下一個節點、當前節點、舊串列的下一個節點的三個指標
