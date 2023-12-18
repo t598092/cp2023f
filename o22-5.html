@@ -66,26 +66,10 @@
             -->
 
             <section>
-                <h3>Link List 操作(進階題1)</h3>
-                <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
-                    style="text-align: left"><br>
-                    <span style="color:red;">
-                    本題須使用以下 Link List struct 實作才予計分。<br><br>
-                    typedef struct node_s{<br>
-                        &emsp;&emsp;int data;<br>
-                        &emsp;&emsp;struct node_s *next;<br>
-                    } node_t;</span><br><br>
-
-                    針對空的 List,先進行 N 個資料節點加入,再進行加入、刪除、交換、反轉等操作。
-                    輸出操作後 Link List 資料。測試資料不會出現相同整數資料。
-                </section>
-            </section>
-
-            <section>
                 <h3>多項式相加、相減、相乘(進階題2)</h3>
                 <section data-no="6" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br>
-                    <span style="color:red;">(使用以下 struct 與 Link List 實作才計分)</span><br>
+                    <span style="color:red;">(使用以下 struct 與 Linked List 實作才計分)</span><br>
                     (1) void add(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相加,Z 是結果<br><br>
                     (2) void sub(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相減,Z 是結果<br><br>
                     (3) void mul(pol_t* X, pol_t* Y, pol_t* Z); //兩個多項式 X, Y 相乘,Z 是結果<br><br>
@@ -267,7 +251,7 @@
                     
                     typedef struct pol_s {
                         nodep_t root;
-                    } pol_t; // pol_t是指Linked list的第一個node。
+                    } pol_t; // pol_t 是指Linked list的第一個node。
                     </code></pre>
                     </section>
                 </section>
@@ -521,7 +505,7 @@
                       void mul(pol_t* X, pol_t* Y, pol_t* Z)
                       {
                           int product_exp; // x * y的次方項
-                          bool exp_exist = false; // 看 z 的 linked list 中是否已經出現過 x * y 的次方 , false 表示未出現
+                          bool exp_exist = false; // 看 z 的 Linked list 中是否已經出現過 x * y 的次方 , false 表示未出現
                           nodep_t x_current, y_current, z_current, z_root, new_node;
                       
                           x_current = X->root;
@@ -553,7 +537,7 @@
 
                           while (z_current != NULL)
                           {
-                              if(z_current->exp == product_exp)    //看 z 的 linked list 中是否已經出現過 x * y 的次方
+                              if(z_current->exp == product_exp)    //看 z 的 Linked list 中是否已經出現過 x * y 的次方
                               {
                                   exp_exist = true;
                                   break;
