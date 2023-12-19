@@ -592,7 +592,7 @@
                 <section data-no="8" data-positionx="0.8" data-positiony="0.03" data-scale="1" data-motionno="0"
                     style="text-align: left"><br><br>
                     &emsp;&emsp;定義函式 delete_the_back 用於刪除串列最後面的節點<br>
-                    &emsp;&emsp;宣告指標 current, p 分別指向新節點和最後面的節點<br>
+                    &emsp;&emsp;宣告指標 current, p 分別指向當前節點和最後面的節點<br>
                     &emsp;&emsp;判斷目前是否為最後一個節點<br>
                     &emsp;&emsp;若不是則檢查直到下一個節點為串列最後一個節點<br>
                     &emsp;&emsp;若目前為最後一個節點，設定 first 為 NULL<br>
@@ -614,8 +614,8 @@
                                     p = current->next; // 將指標 p 指向下一個節點
                                     current -> next = NULL; // 將當前節點設為串列最後一個節點
                                 }
-                                else 
-                                {
+                                else{
+                                    p = first;
                                     first = NULL;
                                 }   
                             }
